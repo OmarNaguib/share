@@ -1,0 +1,152 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark"><meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0e0f13" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../_share/icon.svg?v=1793050235"><link rel="stylesheet" href="../_share/app.css?v=1793050235">
+<title>Always-on dev VPS on Oracle Free Tier: quick guide</title><script>document.documentElement.classList.add("js")</script></head><body class="">
+<header class="bar"><nav class="crumbs"><a href="../" class="home">share</a><span class="sep">/</span><a href="../vps-setup-guide/">vps-setup-guide</a></nav></header>
+<main><article class="prose doc"><h1>Always-on dev VPS on Oracle Free Tier: quick guide</h1>
+<p>How Omar's <code>oci-dev</code> box was built (Sept 2026), boiled down. You end up with a free ARM VM, reachable only over Tailscale from your laptop and phone, running Claude Code around the clock. About an hour, most of it waiting on sign-ins.</p>
+<h2>1. Get the VM (free)</h2>
+<ul>
+<li>Sign up at cloud.oracle.com with a <strong>personal</strong> account. Pick a home region with <strong>3 availability domains</strong> (Frankfurt has 3); you can't change it later, and ARM capacity runs out in single-AD regions.</li>
+<li><strong>Size it to the current Always Free limit: 2 OCPU / 12 GB.</strong> Oracle cut A1 from 4/24 to 2/12 in June 2026, and most guides online still say 4/24. During the free trial it will let you create 4/24, but anything above 2/12 gets terminated when the trial ends.</li>
+<li>Create the instance:
+<ul>
+<li>Shape <code>VM.Standard.A1.Flex</code> (Ampere ARM64), 2 OCPU, 12 GB</li>
+<li>Image: Ubuntu 24.04 (aarch64)</li>
+<li>Boot volume <strong>~200 GB</strong> (the free allowance is 200 GB of block storage in total)</li>
+<li>VCN with a public subnet and internet gateway (the console wizard does this), and paste your SSH public key</li>
+</ul>
+<li>"Out of host capacity" error: try the other ADs, or retry in a loop with the OCI CLI (<code>oci compute instance launch …</code>). The fastest route is an API key (Profile → API keys) plus the CLI, so Claude can drive the whole thing.</li>
+<li>If you already have a work OCI profile in <code>~/.oci/config</code>, <strong>add a separate <code>[personal]</code> profile</strong>. Don't overwrite the work one.</li>
+</ul>
+<h2>2. Stop Oracle reclaiming it</h2>
+<p>Oracle reclaims idle Always Free VMs: CPU, network <strong>and</strong> memory all under 20% (p95) over 7 days. Keeping just one of those above 20% is enough, and memory is the cheapest. Run a small systemd service that holds ~30% RAM as ballast and <strong>releases it automatically</strong> when real work needs the memory. The script is at the bottom of this page; install it as <code>/usr/local/bin/oci-keepalive.py</code> with this unit:</p>
+<pre><code># /etc/systemd/system/oci-keepalive.service
+[Unit]
+Description=OCI Always Free keep-alive (adaptive memory ballast)
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /usr/local/bin/oci-keepalive.py
+Environment=KEEPALIVE_TARGET_PCT=30
+Environment=KEEPALIVE_MIN_FREE_MB=1536
+Restart=always
+Nice=19
+OOMScoreAdjust=1000
+
+[Install]
+WantedBy=multi-user.target</code></pre>
+<p><code>sudo systemctl enable --now oci-keepalive</code></p>
+<h2>3. Base setup</h2>
+<pre><code>sudo adduser &lt;you&gt; &amp;&amp; sudo usermod -aG sudo &lt;you&gt;   # same username as your laptop, so absolute paths in configs still work
+sudo apt update &amp;&amp; sudo apt install -y tmux git ripgrep fd-find jq htop mosh build-essential fail2ban
+# 8 GB swap
+sudo fallocate -l 8G /swapfile &amp;&amp; sudo chmod 600 /swapfile &amp;&amp; sudo mkswap /swapfile &amp;&amp; sudo swapon /swapfile
+echo &#x27;/swapfile none swap sw 0 0&#x27; | sudo tee -a /etc/fstab; echo vm.swappiness=10 | sudo tee /etc/sysctl.d/99-swap.conf
+sudo apt purge -y rpcbind   # the image listens on :111, which you don&#x27;t need</code></pre>
+<ul>
+<li>Node via nvm (arm64 builds), then Claude Code. Use a user-level npm prefix so you don't need sudo.</li>
+<li><code>gh auth login</code>, plus any other CLIs you use.</li>
+<li><strong>It's ARM64:</strong> Google ships no Chrome for ARM Linux, so use Playwright with <code>--browser=chromium</code>. Headless only.</li>
+</ul>
+<h2>4. Lock it down with Tailscale</h2>
+<ol>
+<li>Install on the VM with <code>curl -fsSL <a href="https://tailscale.com/install.sh">https://tailscale.com/install.sh</a> | sh</code>, then <code>sudo tailscale up --ssh</code> and open the login link it prints.</li>
+<li>Install Tailscale on your <strong>laptop and phone</strong> with the same account. (On WSL, the Windows install is enough: WSL reaches the tailnet through it.)</li>
+<li>In the admin console (Access controls), change the <code>ssh</code> rule from <code>"action": "check"</code> to <code>"accept"</code>. Otherwise Tailscale SSH asks for a browser re-auth every ~12 h.</li>
+<li><strong>Before closing anything, check that <code>ssh &lt;you&gt;@&lt;vm-name&gt;</code> works from both the laptop and the phone.</strong> The phone needs no key file (Tailscale SSH); Termius works.</li>
+<li>Then remove the <code>0.0.0.0/0 :22</code> ingress rule from the OCI security list. The VM ends up with no public inbound at all. (Within hours the public IP gets 1000+ SSH brute-force attempts; key-only sshd and fail2ban hold them off, but closing the port is better.) If you lock yourself out, the OCI console's Cloud Shell or serial console still gets you in.</li>
+</ol>
+<p>Gotcha: Oracle's Ubuntu image has its <strong>own iptables</strong> rule rejecting everything except :22. To expose a service, open it in both the security list <strong>and</strong> iptables (or just reach it over Tailscale).</p>
+<p>Use <strong>mosh + tmux</strong> for the phone: sessions survive network changes and screen locks, and typing feels local even over a slow link.</p>
+<h2>5. Moving your laptop setup over (optional)</h2>
+<p><code>rsync</code> your home directory, <strong>excluding</strong> anything built for x86 or easy to regenerate: <code>node_modules</code>, <code>~/.nvm</code>, venvs, native binaries (<code>~/.local/bin/claude</code>), <code>~/.cache</code>. Then rebuild those natively on the VM. Omar went from 17 GB down to 5 GB this way. Logins (gh, etc.) usually need redoing. For OAuth flows that call back to <code>localhost:&lt;port&gt;</code>, tunnel the port with <code>ssh -L &lt;port&gt;:localhost:&lt;port&gt; &lt;vm&gt;</code> so the callback reaches the VM.</p>
+<h2>6. Claude Code on the box</h2>
+<ul>
+<li><strong>Unattended jobs (timers, agents):</strong> run <code>claude setup-token</code> once and keep the long-lived token (~1 year) in an env file that the systemd units load. Don't copy <code>~/.claude/.credentials.json</code> from your laptop: the two machines then fight over one refresh token.</li>
+<li><strong>From your phone:</strong> a Remote Control session inside tmux, run as a systemd service, so it shows up in the Claude app:</li>
+</ul>
+<pre><code># /etc/systemd/system/claude-rc.service
+[Unit]
+After=network-online.target
+[Service]
+Type=forking
+User=&lt;you&gt;
+WorkingDirectory=/home/&lt;you&gt;/workspace
+ExecStart=/usr/bin/tmux new-session -d -s rc -c /home/&lt;you&gt;/workspace &quot;/home/&lt;you&gt;/.local/bin/claude remote-control --name &lt;vm-name&gt;&quot;
+ExecStop=/usr/bin/tmux kill-session -t rc
+Restart=always
+RestartSec=30
+[Install]
+WantedBy=multi-user.target</code></pre>
+<p>Run <code>claude</code> and <code>/login</code> once interactively first. Note: if your Claude account is <strong>shared</strong>, everyone on it can see the Remote Control session. Omar uses his personal account for Remote Control for that reason.</p>
+<ul>
+<li><strong>Machine doc:</strong> write <code>/etc/claude-code/CLAUDE.md</code> (Claude Code loads it in every session, for every user) covering what the box is, what runs on it, which credential files exist (names only) and the rules. Agents then know the constraints without being told.</li>
+</ul>
+<h2>7. Later, if you run unattended agents</h2>
+<p>Run them as a <strong>separate Linux user</strong> with no sudo, no SSH keys and no cloud-admin credentials, only the API tokens they need. "Read-only" written in a prompt doesn't count as a boundary.</p>
+<h2>Appendix: oci-keepalive.py</h2>
+<pre><code>#!/usr/bin/env python3
+&quot;&quot;&quot;
+Keep an OCI Always Free instance out of idle-reclamation range.
+
+Oracle reclaims an Always Free instance only when, over a rolling 7-day window,
+the 95th percentile of CPU AND network AND memory utilisation are ALL below 20%.
+Exceeding any single one is sufficient, so this holds memory above the line --
+which costs no CPU and no bandwidth.
+
+The ballast is adaptive: it targets TARGET_PCT total memory utilisation and
+shrinks whenever real workload needs the RAM, never letting available memory
+fall below MIN_FREE_MB.
+&quot;&quot;&quot;
+import os, time
+
+CHUNK = 64 &lt;&lt; 20                                  # 64 MiB granularity
+TARGET_PCT  = float(os.environ.get(&quot;KEEPALIVE_TARGET_PCT&quot;, &quot;30&quot;))
+MIN_FREE_MB = int(os.environ.get(&quot;KEEPALIVE_MIN_FREE_MB&quot;, &quot;1536&quot;))
+INTERVAL    = int(os.environ.get(&quot;KEEPALIVE_INTERVAL&quot;, &quot;60&quot;))
+
+def meminfo():
+    d = {}
+    with open(&quot;/proc/meminfo&quot;) as f:
+        for line in f:
+            k, _, v = line.partition(&quot;:&quot;)
+            d[k] = int(v.split()[0]) * 1024        # kB -&gt; bytes
+    return d[&quot;MemTotal&quot;], d[&quot;MemAvailable&quot;]
+
+ballast = []                                       # list of 64 MiB byte objects
+
+def held():
+    return len(ballast) * CHUNK
+
+while True:
+    total, available = meminfo()
+    # what the rest of the system is using, excluding our own ballast
+    other_used = (total - available) - held()
+
+    desired = int(total * TARGET_PCT / 100.0) - other_used   # to hit the target
+    headroom = (total - MIN_FREE_MB * 1024 * 1024) - other_used
+    desired = max(0, min(desired, headroom))                 # never starve the box
+
+    want = desired // CHUNK
+    have = len(ballast)
+
+    if want &gt; have:
+        for _ in range(want - have):
+            try:
+                ballast.append(b&quot;\x01&quot; * CHUNK)    # fully materialised -&gt; real RSS
+            except MemoryError:
+                break
+    elif want &lt; have:
+        del ballast[want:]
+
+    if len(ballast) != have:
+        total_mb, held_mb = total // 1048576, held() // 1048576
+        pct = (total - meminfo()[1]) * 100.0 / total
+        print(f&quot;ballast {have*64}MiB -&gt; {held_mb}MiB &quot;
+              f&quot;(mem now {pct:.1f}% of {total_mb}MiB)&quot;, flush=True)
+
+    time.sleep(INTERVAL)</code></pre></article></main>
+<script src="../_share/viewer.js?v=1793050235" defer></script></body></html>

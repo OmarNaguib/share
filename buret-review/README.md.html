@@ -1,0 +1,464 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark"><meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0e0f13" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../_share/icon.svg?v=1793050235"><link rel="stylesheet" href="../_share/app.css?v=1793050235">
+<title>Buret design review</title><script>document.documentElement.classList.add("js")</script></head><body class="">
+<header class="bar"><nav class="crumbs"><a href="../" class="home">share</a><span class="sep">/</span><a href="../buret-review/">buret-review</a></nav></header>
+<main><article class="prose doc"><h1>Buret design review</h1>
+<p>One section per product question (PQ) and design deviation (D). "Design" is the need-validation prototype (2026-10-29) at the spot in question; the red outline marks it. "Buret" fills in once the screen is built. Regenerate with <code>node capture.mjs</code> in <code>tools/review-capture</code>.</p>
+<p>Captured 62 · no screen 1 · failed 0</p>
+<h2>Product questions</h2>
+<h3>PQ-1 · Login: B-Connect credentials or name + PIN on shared tills</h3>
+<p>تسجيل الدخول</p>
+<p>v1 starts with the old B-Connect credentials. Keep that long term, or move to pick-your-name + PIN on shared tills (P3)?</p>
+<p><strong>Where:</strong></p>
+<p>ديمو ← حالات لا تُفتح بالنقر ← صفحة الدخول</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<p><strong>Note:</strong> The design's login is a placeholder: «شاشة الدخول لم تُصمَّم بعد».</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="PQ-1.png"><img loading="lazy" decoding="async" alt="PQ-1 design" src="PQ-1.png"></a> <a href="PQ-1.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>PQ-2 · Cash rounding to 25/50 piasters</h3>
+<p>تقريب النقدية لأقرب 25 / 50 قرشًا</p>
+<p>Round cash totals to 25/50 piasters (O-M1)? The design shows exact piasters.</p>
+<p><strong>Where:</strong></p>
+<p>نقطة البيع ← الدفع ← نقدي ← المبلغ المستلم / الباقي</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="PQ-2.png"><img loading="lazy" decoding="async" alt="PQ-2 design" src="PQ-2.png"></a> <a href="PQ-2.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>PQ-3 · What cannot be sold (expired, near-expiry, recalled, «موقوف البيع»)</h3>
+<p>ما الذي لا يُباع؟ «موقوف البيع»</p>
+<p>Expired batches only, or also near-expiry, recalled or «موقوف البيع» items? Any override (S5b)? The design shows a «موقوف البيع» badge and keeps selling; Omar's lean: it must not sell normally.</p>
+<p><strong>Where:</strong></p>
+<p>المخزون والأصناف ← الأصناف ← فلتر «موقوف البيع» ← «ديكلوفين 50»</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="PQ-3.png"><img loading="lazy" decoding="async" alt="PQ-3 design" src="PQ-3.png"></a> <a href="PQ-3.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>PQ-4 · Item-level extra prices («الأسعار المتاحة»)</h3>
+<p>الأسعار المتاحة على مستوى الصنف</p>
+<p>What are the extra item prices for, who may pick one at the till, and should they belong to a batch (O-S3)?</p>
+<p><strong>Where:</strong></p>
+<p>المخزون والأصناف ← الأصناف ← صنف ← كارت الصنف ← «الأسعار المتاحة» / «إضافة سعر»</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="PQ-4.png"><img loading="lazy" decoding="async" alt="PQ-4 design" src="PQ-4.png"></a> <a href="PQ-4.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>PQ-5 · Transfer awaiting receipt: where is the stock?</h3>
+<p>تحويل بانتظار الاستلام</p>
+<p>Between send and receipt, does the stock stay in the sender until confirmed, or sit in an "in transit" place (O-S5)?</p>
+<p><strong>Where:</strong></p>
+<p>ديمو ← سلسلة ← المخزون والأصناف ← التحويل بين المخازن ← إذن استلام</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<p><strong>Note:</strong> Pending receipts exist only in chain mode; inside one pharmacy the design transfers immediately («يُنفَّذ التحويل فورًا دون استلام»).</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="PQ-5.png"><img loading="lazy" decoding="async" alt="PQ-5 design" src="PQ-5.png"></a> <a href="PQ-5.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>PQ-6 · VAT / tax reports</h3>
+<p>تقارير الضرائب</p>
+<p>Does Buret need VAT or tax reports (for the accountant or e-invoicing), or only correct VAT amounts on each purchase line (O-M3)? The design has a monthly VAT page.</p>
+<p><strong>Where:</strong></p>
+<p>الحسابات ← الضرائب</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="PQ-6.png"><img loading="lazy" decoding="async" alt="PQ-6 design" src="PQ-6.png"></a> <a href="PQ-6.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>PQ-7 · Count finds an expiry with no batch («إضافة تاريخ صلاحية»)</h3>
+<p>الجرد: إضافة تاريخ صلاحية غير موجود</p>
+<p>What does posting the count do with a newly found expiry: new batch, at what cost, who approves? The design is silent (stock Q36).</p>
+<p><strong>Where:</strong></p>
+<p>المخزون والأصناف ← الجرد ← جرد جديد (الكمية والصلاحية) ← بدء الجرد ← صنف ← «إضافة تاريخ صلاحية»</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="PQ-7.png"><img loading="lazy" decoding="async" alt="PQ-7 design" src="PQ-7.png"></a> <a href="PQ-7.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>PQ-8 · No-expiry items («بدون صلاحية»)</h3>
+<p>Which kinds of items may have no expiry date, and are they sold like any other (stock spec, round 2)?</p>
+<p><strong>Design:</strong> no screen (the design has no «بدون صلاحية» option; every batch has an expiry).</p>
+<h3>PQ-9 · Posting a count («ترحيل الجرد»)</h3>
+<p>ترحيل الجرد</p>
+<p>Does posting correct stock to what was counted, and from which expiry are a count shortage or surplus taken? The design only marks the count posted.</p>
+<p><strong>Where:</strong></p>
+<p>المخزون والأصناف ← الجرد ← جرد جديد (الكمية والصلاحية) ← بدء الجرد ← «ترحيل الجرد»</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="PQ-9.png"><img loading="lazy" decoding="async" alt="PQ-9 design" src="PQ-9.png"></a> <a href="PQ-9.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>PQ-10 · Multi-branch (chain mode) for the pilot?</h3>
+<p>صيدلية واحدة / سلسلة</p>
+<p>Is multi-branch (the design's chain mode) needed for the pilot? v1 is single-branch until then.</p>
+<p><strong>Where:</strong></p>
+<p>ديمو ← الصيدلية: «صيدلية واحدة» / «سلسلة (٣ فروع)»</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="PQ-10.png"><img loading="lazy" decoding="async" alt="PQ-10 design" src="PQ-10.png"></a> <a href="PQ-10.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>PQ-11 · Write-off regulation («محضر إعدام أصناف»)</h3>
+<p>الإعدام: محضر إعدام أصناف</p>
+<p>For a pharmacist: do Egyptian rules require more for a write-off than a manager and a printed «محضر إعدام أصناف» (committee, health-directorate form, controlled drugs)?</p>
+<p><strong>Where:</strong></p>
+<p>المخزون ← المخزن: ليس للبيع ← صف ← «إعدام» ← «ترحيل» ← «طباعة المحضر»</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="PQ-11.png"><img loading="lazy" decoding="async" alt="PQ-11 design" src="PQ-11.png"></a> <a href="PQ-11.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>PQ-12 · Deleting an item: 5-second undo enough?</h3>
+<p>حذف صنف: «تراجع» 5 ثوانٍ</p>
+<p>Is the 5-second undo enough, or should deleted items be viewable and restorable later? Who may delete?</p>
+<p><strong>Where:</strong></p>
+<p>المخزون والأصناف ← الأصناف ← صف ← «حذف» ← رسالة «تراجع»</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="PQ-12.png"><img loading="lazy" decoding="async" alt="PQ-12 design" src="PQ-12.png"></a> <a href="PQ-12.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>PQ-13 · Two batches with the same expiry</h3>
+<p>تشغيلتان بنفس تاريخ الصلاحية</p>
+<p>Two batches with the same expiry (different price or cost): separate rows, as the design's stock page shows?</p>
+<p><strong>Where:</strong></p>
+<p>المخزون والأصناف ← الأصناف ← بانادول إكسترا ← كارت الصنف ← «تواريخ الصلاحية»</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<p><strong>Note:</strong> No seeded item has two batches with one expiry, so this shows where batches are listed: one row per expiry with its own price.</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="PQ-13.png"><img loading="lazy" decoding="async" alt="PQ-13 design" src="PQ-13.png"></a> <a href="PQ-13.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>PQ-14 · The «إعدام» tab in «ليس للبيع»</h3>
+<p>تبويب «إعدام» في «ليس للبيع»</p>
+<p>What belongs in the «إعدام» tab? No flow in the design fills it.</p>
+<p><strong>Where:</strong></p>
+<p>المخزون ← المخزن: ليس للبيع ← تبويبات المصدر ← «إعدام»</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="PQ-14.png"><img loading="lazy" decoding="async" alt="PQ-14 design" src="PQ-14.png"></a> <a href="PQ-14.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>PQ-15 · After a write-off: notify or approve?</h3>
+<p>بعد الإعدام: «تم إبلاغ المدير»</p>
+<p>The design says «تم إبلاغ المدير» but nothing follows, and the bell shows a demo «إعدام بانتظار الموافقة». Notify someone (the owner?) or wait for approval? Until answered it posts directly.</p>
+<p><strong>Where:</strong></p>
+<p>المخزون ← ليس للبيع ← «إعدام» ← «ترحيل الإعدام» (رسالة «تم إبلاغ المدير») ← التنبيهات ← «إعدام بانتظار الموافقة»</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="PQ-15.png"><img loading="lazy" decoding="async" alt="PQ-15 design" src="PQ-15.png"></a> <a href="PQ-15.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>PQ-16 · Reprinting a completed sale's receipt</h3>
+<p>إعادة طباعة إيصال فاتورة مُتمّة</p>
+<p>«فواتير البيع» has no print action. Allowed, by whom, marked as a copy?</p>
+<p><strong>Where:</strong></p>
+<p>البيع ← فواتير البيع ← فتح فاتورة (لا يوجد زر طباعة)</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="PQ-16.png"><img loading="lazy" decoding="async" alt="PQ-16 design" src="PQ-16.png"></a> <a href="PQ-16.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>PQ-17 · Open invoices at drawer handover / logout / tab close</h3>
+<p>فواتير مفتوحة عند تسليم الدرج</p>
+<p>The design drops open invoices silently. Warn, keep, or block?</p>
+<p><strong>Where:</strong></p>
+<p>نقطة البيع (فاتورة بها أصناف) ← البيع ← تسليم الدرج</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="PQ-17.png"><img loading="lazy" decoding="async" alt="PQ-17 design" src="PQ-17.png"></a> <a href="PQ-17.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>PQ-18 · Reason for a sale without a registered customer</h3>
+<p>سبب عدم التسجيل</p>
+<p>The reports need «سبب عدم التسجيل», the POS has no field. Add it? Which reasons?</p>
+<p><strong>Where:</strong></p>
+<p>التقارير ← اللوحة المركزية ← العملاء ← «لماذا لا يُسجَّل العملاء»</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="PQ-18.png"><img loading="lazy" decoding="async" alt="PQ-18 design" src="PQ-18.png"></a> <a href="PQ-18.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>PQ-19 · When does credit («آجل») stop?</h3>
+<p>قاعدة إيقاف الآجل</p>
+<p>Limit only, or also overdue beyond N days? The design marks it undecided.</p>
+<p><strong>Where:</strong></p>
+<p>التقارير ← اللوحة المركزية ← البيع الآجل ← «مواعيد التحصيل»</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="PQ-19.png"><img loading="lazy" decoding="async" alt="PQ-19 design" src="PQ-19.png"></a> <a href="PQ-19.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>PQ-20 · Return window: how are days counted?</h3>
+<p>مدة الاسترجاع</p>
+<p>Calendar days from the invoice date? From delivery for delivery orders?</p>
+<p><strong>Where:</strong></p>
+<p>الإعدادات ← المطبوعات ← الإيصال ← «مدة الاسترجاع»</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="PQ-20.png"><img loading="lazy" decoding="async" alt="PQ-20 design" src="PQ-20.png"></a> <a href="PQ-20.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>PQ-21 · Controlled-drug register («دفتر»)</h3>
+<p>دفتر الأصناف الجدول</p>
+<p>For a pharmacist: is a controlled-drug register required by law beyond the three ticks at sale? What must it hold?</p>
+<p><strong>Where:</strong></p>
+<p>نقطة البيع ← صنف جدول (ترامادول) ← إتمام الفاتورة ← «صنف جدول في الفاتورة»</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="PQ-21.png"><img loading="lazy" decoding="async" alt="PQ-21 design" src="PQ-21.png"></a> <a href="PQ-21.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>PQ-22 · Store credit («رصيد للعميل»)</h3>
+<p>رصيد للعميل</p>
+<p>May a cash, card or delivery sale be refunded as a balance the customer spends later? v1 has none (the design's return screen offers none).</p>
+<p><strong>Where:</strong></p>
+<p>البيع ← إنشاء مرتجع ← اختيار فاتورة ← «طريقة الرد»</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="PQ-22.png"><img loading="lazy" decoding="async" alt="PQ-22 design" src="PQ-22.png"></a> <a href="PQ-22.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>PQ-23 · Points on a return</h3>
+<p>النقاط عند المرتجع</p>
+<p>Buret takes back the points earned on returned items (Omar's call). Confirm. The design's return touches no points.</p>
+<p><strong>Where:</strong></p>
+<p>البيع ← إنشاء مرتجع ← فاتورة عميل ← «ملخص المرتجع»</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="PQ-23.png"><img loading="lazy" decoding="async" alt="PQ-23 design" src="PQ-23.png"></a> <a href="PQ-23.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>PQ-24 · Points expiry change</h3>
+<p>انتهاء صلاحية النقاط</p>
+<p>Does changing «النقاط تنتهي بعد N يوم» affect points already earned?</p>
+<p><strong>Where:</strong></p>
+<p>العملاء ← النقاط ← قواعد النقاط ← «انتهاء صلاحية النقاط»</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="PQ-24.png"><img loading="lazy" decoding="async" alt="PQ-24 design" src="PQ-24.png"></a> <a href="PQ-24.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>PQ-25 · Points on credit («آجل») sales</h3>
+<p>النقاط في البيع الآجل</p>
+<p>The design earns and redeems points immediately on credit sales. Buret assumes no points on credit sales until product says otherwise.</p>
+<p><strong>Where:</strong></p>
+<p>نقطة البيع ← الدفع ← آجل ← عميل ← «نقاط العميل»</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="PQ-25.png"><img loading="lazy" decoding="async" alt="PQ-25 design" src="PQ-25.png"></a> <a href="PQ-25.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>PQ-26 · Contract discount order</h3>
+<p>ترتيب خصم التعاقد</p>
+<p>The design applies the contract after line discounts, then adds invoice and points discounts. Confirm.</p>
+<p><strong>Where:</strong></p>
+<p>نقطة البيع ← «بتعاقد أو تأمين؟» ← اختيار تعاقد</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="PQ-26.png"><img loading="lazy" decoding="async" alt="PQ-26 design" src="PQ-26.png"></a> <a href="PQ-26.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>PQ-27 · Contract taken from the customer</h3>
+<p>التعاقد من العميل</p>
+<p>The editor hint says the contract applies by itself when the customer is picked; the POS needs an explicit pick. Which?</p>
+<p><strong>Where:</strong></p>
+<p>العملاء ← التعاقدات والتأمين ← تعاقد جديد ← «العملاء المرتبطين»</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="PQ-27.png"><img loading="lazy" decoding="async" alt="PQ-27 design" src="PQ-27.png"></a> <a href="PQ-27.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>PQ-28 · Merging duplicate customers</h3>
+<p>دمج العملاء المكررين</p>
+<p>Needed? The design has no merge.</p>
+<p><strong>Where:</strong></p>
+<p>العملاء ← العملاء (لا يوجد دمج)</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="PQ-28.png"><img loading="lazy" decoding="async" alt="PQ-28 design" src="PQ-28.png"></a> <a href="PQ-28.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>PQ-29 · Available credit at the POS</h3>
+<p>الرصيد المتاح للآجل في نقطة البيع</p>
+<p>Show the customer's available credit before Ctrl+S? The design only refuses at completion.</p>
+<p><strong>Where:</strong></p>
+<p>نقطة البيع ← الدفع ← آجل ← عميل</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="PQ-29.png"><img loading="lazy" decoding="async" alt="PQ-29 design" src="PQ-29.png"></a> <a href="PQ-29.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>PQ-30 · Receipt for a credit collection («تحصيل»)</h3>
+<p>إيصال التحصيل</p>
+<p>Print a receipt for a credit collection?</p>
+<p><strong>Where:</strong></p>
+<p>العملاء ← الحسابات الآجلة ← «تحصيل» ← «تحصيل من …»</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="PQ-30.png"><img loading="lazy" decoding="async" alt="PQ-30 design" src="PQ-30.png"></a> <a href="PQ-30.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>PQ-31 · B-Connect customers and balances in onboarding</h3>
+<p>نقل العملاء وأرصدتهم من B-Connect</p>
+<p>How does their review look? The design's onboarding has no customers step.</p>
+<p><strong>Where:</strong></p>
+<p>ديمو ← حالات لا تُفتح بالنقر ← «خطوات النقل» ← «محاكاة: انتهى النقل»</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<p><strong>Note:</strong> The six migration steps end at «المخزون المنقول»; none covers customers or their balances.</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="PQ-31.png"><img loading="lazy" decoding="async" alt="PQ-31 design" src="PQ-31.png"></a> <a href="PQ-31.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>PQ-32 · «العملاء المدينين» / «مدينين» wording (G3)</h3>
+<p>العملاء المدينين</p>
+<p>For the designer: «العملاء المدينين» and «مدينين» on «الحسابات الآجلة» break G3 (مدين only in the journal and trial balance). Keep, or reword?</p>
+<p><strong>Where:</strong></p>
+<p>العملاء ← الحسابات الآجلة ← «العملاء المدينين»</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="PQ-32.png"><img loading="lazy" decoding="async" alt="PQ-32 design" src="PQ-32.png"></a> <a href="PQ-32.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>PQ-33 · Purchase VAT before or after the invoice discount</h3>
+<p>ض.ق.م قبل خصم الفاتورة أم بعده</p>
+<p>Is purchase VAT computed before or after the invoice discount? The design computes it before (VAT on each line, then the invoice discount off the total); marked for an accountant.</p>
+<p><strong>Where:</strong></p>
+<p>النواقص والمشتريات ← فواتير الشراء ← مسودة ← «مراجعة واعتماد» ← سطر «ض.ق.م 14%» + «خصم الفاتورة» ← «إجمالي ض.ق.م»</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<p><strong>Note:</strong> Shown with VAT ticked on the first line and a 10% invoice discount: «إجمالي ض.ق.م» does not change with the discount.</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="PQ-33.png"><img loading="lazy" decoding="async" alt="PQ-33 design" src="PQ-33.png"></a> <a href="PQ-33.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>PQ-34 · Supplier return value: batch cost or accepted price</h3>
+<p>قيمة مرتجع المورد</p>
+<p>For an accountant: is a supplier return valued at the batch cost or at the price the supplier accepts?</p>
+<p><strong>Where:</strong></p>
+<p>المخزون ← المخزن: ليس للبيع ← «مرتجعات للموردين معلّقة» ← «تسجيل رد المورد» ← «السعر» / «قيمة المقبول»</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<p><strong>Note:</strong> The design fills «السعر» with the batch's purchase cost (60.84) and lets it be edited; «قيمة المقبول» = accepted qty × that price.</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="PQ-34.png"><img loading="lazy" decoding="async" alt="PQ-34 design" src="PQ-34.png"></a> <a href="PQ-34.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>PQ-35 · Bill total ≠ sum of lines at approve</h3>
+<p>إجمالي فاتورة المورد ≠ مجموع السطور</p>
+<p>When the printed bill total and the sum of the lines differ at approve, which amount does the pharmacy owe the supplier? The design warns («الفرق: … — راجع السطور») and still allows approve.</p>
+<p><strong>Where:</strong></p>
+<p>النواقص والمشتريات ← فواتير الشراء ← مسودة ← «مراجعة واعتماد» ← شريط «الفرق» أسفل السطور</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="PQ-35.png"><img loading="lazy" decoding="async" alt="PQ-35 design" src="PQ-35.png"></a> <a href="PQ-35.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>PQ-36 · Receiving expired or near-expiry stock</h3>
+<p>استلام بضاعة منتهية أو قريبة الانتهاء</p>
+<p>Block receiving already-expired or near-expiry stock, or allow it with a flag (current plan)? The design has no check at all.</p>
+<p><strong>Where:</strong></p>
+<p>النواقص والمشتريات ← فواتير الشراء ← مسودة ← «مراجعة واعتماد» ← سطر بانادول إكسترا ← «تاريخ الصلاحية» 04/26</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<p><strong>Note:</strong> The seeded draft already has an expired line (04/26; the demo date is 22/9/2026) and nothing flags it.</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="PQ-36.png"><img loading="lazy" decoding="async" alt="PQ-36 design" src="PQ-36.png"></a> <a href="PQ-36.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>PQ-37 · Reversing an approved purchase invoice</h3>
+<p>إلغاء فاتورة شراء معتمدة</p>
+<p>Is reversing an approved purchase invoice needed? v1 corrects by supplier return. The design opens approved invoices read-only with no edit, cancel or reverse.</p>
+<p><strong>Where:</strong></p>
+<p>النواقص والمشتريات ← فواتير الشراء ← فاتورة معتمدة ← «معتمدة — للعرض فقط»</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="PQ-37.png"><img loading="lazy" decoding="async" alt="PQ-37 design" src="PQ-37.png"></a> <a href="PQ-37.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>PQ-38 · Discount % and bonus boxes linked</h3>
+<p>الخصم والبونص مرتبطان</p>
+<p>For a pharmacist: are a supplier line's discount % and bonus boxes really linked, as the design assumes (bonus = qty × discount %, and the same % lowers the pharmacist price)?</p>
+<p><strong>Where:</strong></p>
+<p>النواقص والمشتريات ← فواتير الشراء ← مسودة ← «مراجعة واعتماد» ← سطر ← «خصم %» / «بونص»</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<p><strong>Note:</strong> Shown by typing 10% on the first line (50 boxes): the bonus becomes 5 boxes on its own.</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="PQ-38.png"><img loading="lazy" decoding="async" alt="PQ-38 design" src="PQ-38.png"></a> <a href="PQ-38.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>PQ-39 · A sent order that never arrives</h3>
+<p>طلبية مرسلة لم تصل</p>
+<p>An ordered item stays hidden from the reorder list and the suggestions forever. Cancel, expire, or remind? The design has no cancel, edit or "received" state for a sent order.</p>
+<p><strong>Where:</strong></p>
+<p>النواقص والمشتريات ← كشكول النواقص ← «الطلبات المرسلة» ← «بانتظار فاتورة الشراء»</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="PQ-39.png"><img loading="lazy" decoding="async" alt="PQ-39 design" src="PQ-39.png"></a> <a href="PQ-39.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>PQ-40 · Duplicate supplier bills</h3>
+<p>فاتورة مورد مكررة</p>
+<p>Same bill number and supplier entered twice: warn or block? The design has no check.</p>
+<p><strong>Where:</strong></p>
+<p>النواقص والمشتريات ← فواتير الشراء ← مسودة ← «رقم فاتورة المورد»</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<p><strong>Note:</strong> Shown by giving the draft the number of an approved bill from the same supplier (UP-88015, المتحدة للصيادلة): nothing warns.</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="PQ-40.png"><img loading="lazy" decoding="async" alt="PQ-40 design" src="PQ-40.png"></a> <a href="PQ-40.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>PQ-41 · Purchase drafts: shared or owned</h3>
+<p>مسودات فواتير الشراء</p>
+<p>Are purchase drafts shared by all users, or owned by their creator? The design lists everyone's drafts with no owner and no lock.</p>
+<p><strong>Where:</strong></p>
+<p>النواقص والمشتريات ← فواتير الشراء ← «مسودات بانتظار المراجعة»</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="PQ-41.png"><img loading="lazy" decoding="async" alt="PQ-41 design" src="PQ-41.png"></a> <a href="PQ-41.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>PQ-42 · Supplier minimum order («حد الطلبية»)</h3>
+<p>حد الطلبية</p>
+<p>Should the supplier minimum order do anything (e.g. warn when an order is under it)? The design stores and shows it; nothing uses it.</p>
+<p><strong>Where:</strong></p>
+<p>النواقص والمشتريات ← الموردون ← ابن سينا فارما ← «شروط التعامل» ← «حد الطلبية (ج)»</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="PQ-42.png"><img loading="lazy" decoding="async" alt="PQ-42 design" src="PQ-42.png"></a> <a href="PQ-42.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>PQ-43 · «أعلى خصم»: where does it come from?</h3>
+<p>أعلى خصم</p>
+<p>From the last invoice line, a supplier offer list, or drop it? The design shows demo data.</p>
+<p><strong>Where:</strong></p>
+<p>النواقص والمشتريات ← كشكول النواقص ← عمود «أعلى خصم»</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="PQ-43.png"><img loading="lazy" decoding="async" alt="PQ-43 design" src="PQ-43.png"></a> <a href="PQ-43.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>PQ-44 · The «طلبية مفتوحة — لم تُرسل بعد» card</h3>
+<p>طلبية مفتوحة — لم تُرسل بعد</p>
+<p>Keep or remove this card? Only Ctrl+Enter fills it, and its empty text names a button that does not exist.</p>
+<p><strong>Where:</strong></p>
+<p>النواقص والمشتريات ← كشكول النواقص ← «مقترح حسب معدل البيع» ← تحديد صنف ← Ctrl+Enter ← «كشكول النواقص»</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="PQ-44.png"><img loading="lazy" decoding="async" alt="PQ-44 design" src="PQ-44.png"></a> <a href="PQ-44.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>PQ-45 · How long are bill images kept?</h3>
+<p>مدة الاحتفاظ بصور الفواتير</p>
+<p>For an accountant: how long are supplier bill images kept? The design says nothing about retention.</p>
+<p><strong>Where:</strong></p>
+<p>النواقص والمشتريات ← فواتير الشراء ← مسودة ← «مراجعة واعتماد» ← «إظهار الصورة» / «إخفاء الصورة»</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="PQ-45.png"><img loading="lazy" decoding="async" alt="PQ-45 design" src="PQ-45.png"></a> <a href="PQ-45.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>PQ-46 · Bill reading: provider, waiting and failure states</h3>
+<p>قراءة صورة الفاتورة</p>
+<p>Which paid provider reads bills in production, and what do staff see while a bill is being read and when reading fails? The design has neither state: an upload opens a filled draft at once.</p>
+<p><strong>Where:</strong></p>
+<p>النواقص والمشتريات ← فواتير الشراء ← «فاتورة جديدة» (F8) ← «رفع صورة من الجهاز» ← مسودة جاهزة فورًا</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<p><strong>Note:</strong> The video shows the upload choice, then the filled draft with no step in between.</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="PQ-46.png"><img loading="lazy" decoding="async" alt="PQ-46 design" src="PQ-46.png"></a> <a href="PQ-46.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h2>Design deviations</h2>
+<h3>D1 · Write-off permission</h3>
+<p>صلاحية الإعدام</p>
+<p>Design: write-off allowed for the "manager" role directly. Buret: a separate <code>destroy</code> capability, default manager + owner (P1).</p>
+<p><strong>Where:</strong></p>
+<p>المخزون ← المخزن: ليس للبيع ← «إعدام» (للمدير فقط)</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="D1.png"><img loading="lazy" decoding="async" alt="D1 design" src="D1.png"></a> <a href="D1.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>D2 · Item delete permission not checked</h3>
+<p>حذف صنف</p>
+<p>Design: the «حذف صنف» permission exists but is never checked; anyone can delete. Buret: the permission is checked (P1). Shown as a pharmacist.</p>
+<p><strong>Where:</strong></p>
+<p>المخزون والأصناف ← الأصناف ← صف ← «حذف» (صيدلي)</p>
+<p><strong>Role:</strong> pharmacist (صيدلي)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="D2.png"><img loading="lazy" decoding="async" alt="D2 design" src="D2.png"></a> <a href="D2.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>D3 · Delivery order edits</h3>
+<p>تعديل طلب التوصيل</p>
+<p>Design: lines of a registered delivery order are edited in place, total recomputed. Buret: same screens; every change is a new entry; sale final at «تحصيل» (M5/S3).</p>
+<p><strong>Where:</strong></p>
+<p>البيع ← طلبات التوصيل ← طلب ← «إزالة صنف» / «إضافة صنف للطلب»</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="D3.png"><img loading="lazy" decoding="async" alt="D3 design" src="D3.png"></a> <a href="D3.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>D4 · Return of a credit («آجل») invoice</h3>
+<p>مرتجع فاتورة آجل</p>
+<p>Design: «نقدي» refund always offered, so unpaid credit is refunded in cash. Buret: the return first reduces the customer's debt; cash only for the part already paid.</p>
+<p><strong>Where:</strong></p>
+<p>البيع ← إنشاء مرتجع ← فاتورة آجل ← «طريقة الرد»</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="D4.png"><img loading="lazy" decoding="async" alt="D4 design" src="D4.png"></a> <a href="D4.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>D5 · Discount caps bind the owner</h3>
+<p>حدود الخصم</p>
+<p>Design: fixed 20% line / 10% invoice caps bind every role, even the owner. Buret: the owner may exceed them; the caps bind every other role.</p>
+<p><strong>Where:</strong></p>
+<p>نقطة البيع ← بند ← «الخصم» 25% (صاحب الحساب) ← «يتجاوز الحد المسموح للبند (20%)»</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="D5.png"><img loading="lazy" decoding="async" alt="D5 design" src="D5.png"></a> <a href="D5.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>D6 · Return window not checked, editable by anyone</h3>
+<p>مدة الاسترجاع</p>
+<p>Design: «مدة الاسترجاع» printed but never checked; editable by anyone on the returns page. Buret: enforced server-side; a late return needs a capability; the field leaves the returns page. Shown as a pharmacist.</p>
+<p><strong>Where:</strong></p>
+<p>البيع ← إنشاء مرتجع ← «مدة الاسترجاع» (صيدلي)</p>
+<p><strong>Role:</strong> pharmacist (صيدلي)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="D6.png"><img loading="lazy" decoding="async" alt="D6 design" src="D6.png"></a> <a href="D6.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>D7 · Controlled items: ticks not saved</h3>
+<p>الأصناف الجدول</p>
+<p>Design: the three ticks are not saved; «بيع صنف جدول» never checked. Buret: ticks saved with the sale; the capability is checked.</p>
+<p><strong>Where:</strong></p>
+<p>نقطة البيع ← ترامادول ← إتمام الفاتورة ← «صنف جدول في الفاتورة»</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="D7.png"><img loading="lazy" decoding="async" alt="D7 design" src="D7.png"></a> <a href="D7.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>D8 · Cashier menu</h3>
+<p>قائمة الكاشير</p>
+<p>Design: a cashier sees every «البيع» page. Buret: the menu follows the capabilities (G5). Shown as a cashier.</p>
+<p><strong>Where:</strong></p>
+<p>البيع (قائمة) — دور الكاشير</p>
+<p><strong>Role:</strong> cashier (كاشير)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="D8.png"><img loading="lazy" decoding="async" alt="D8 design" src="D8.png"></a> <a href="D8.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>D9 · Customer delete</h3>
+<p>حذف عميل</p>
+<p>Design: «حذف» removes the customer; no debt check. Buret: same screen; the customer is archived; refused while they owe.</p>
+<p><strong>Where:</strong></p>
+<p>العملاء ← العملاء ← «حذف» ← «حذف …؟»</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="D9.png"><img loading="lazy" decoding="async" alt="D9 design" src="D9.png"></a> <a href="D9.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>D10 · Customers permissions</h3>
+<p>صلاحيات العملاء</p>
+<p>Design: no customers group; every role edits customers, limits, points rules, contracts. Buret: capabilities for each; quick-add at the POS stays open. Shown as a pharmacist editing credit settings.</p>
+<p><strong>Where:</strong></p>
+<p>العملاء ← الحسابات الآجلة ← «إعدادات الآجل» (صيدلي)</p>
+<p><strong>Role:</strong> pharmacist (صيدلي)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="D10.png"><img loading="lazy" decoding="async" alt="D10 design" src="D10.png"></a> <a href="D10.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>D11 · Credit collection misses the drawer</h3>
+<p>التحصيل والدرج</p>
+<p>Design: a cash «تحصيل» is recorded but never reaches the drawer's expected cash. Buret: it counts in expected cash.</p>
+<p><strong>Where:</strong></p>
+<p>العملاء ← الحسابات الآجلة ← «تحصيل» ← نقدي</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="D11.png"><img loading="lazy" decoding="async" alt="D11 design" src="D11.png"></a> <a href="D11.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>D12 · Discounts above the total</h3>
+<p>خصم أكبر من الإجمالي</p>
+<p>Design: total clamped to 0. Buret: the invoice is refused (M3).</p>
+<p><strong>Where:</strong></p>
+<p>نقطة البيع ← ابيجينت (4.75) ← نقاط العميل 959 ← «استخدام 40 نقطة» ← خصم البند 20% ← «الإجمالي» 0.00</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<p><strong>Note:</strong> Points are redeemed up to the total first; a 20% line discount added after that pushes the total to −0.20, shown as 0.00.</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="D12.png"><img loading="lazy" decoding="async" alt="D12 design" src="D12.png"></a> <a href="D12.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>D13 · Points on credit sales</h3>
+<p>النقاط في البيع الآجل</p>
+<p>Design: earned and redeemed immediately. Buret: none until product answers PQ-25.</p>
+<p><strong>Where:</strong></p>
+<p>نقطة البيع ← آجل ← عميل ← «نقاط العميل»</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="D13.png"><img loading="lazy" decoding="async" alt="D13 design" src="D13.png"></a> <a href="D13.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>D14 · Points on a return</h3>
+<p>النقاط عند المرتجع</p>
+<p>Design: untouched. Buret: taken back for the returned items (PQ-23 confirms).</p>
+<p><strong>Where:</strong></p>
+<p>البيع ← إنشاء مرتجع ← فاتورة عميل ← «تأكيد المرتجع»</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="D14.png"><img loading="lazy" decoding="async" alt="D14 design" src="D14.png"></a> <a href="D14.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>D15 · Supplier return close</h3>
+<p>إغلاق مرتجع المورد</p>
+<p>Design: «السعر» blank (value 0 unless typed); the supplier is never credited; «مرتجع للمورد» overwrites the set-aside reason. Buret: the price defaults to the batch cost; the accepted value credits the supplier; the original reason is kept.</p>
+<p><strong>Where:</strong></p>
+<p>المخزون ← ليس للبيع ← «مرتجع للمورد» ← «إنشاء مرتجع معلّق» ← «تسجيل رد المورد» ← «قيمة المقبول»</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<p><strong>Note:</strong> In this export «السعر» is not blank: it is pre-filled with the batch cost (145.08), so that part of the deviation no longer shows. The video shows the reason overwrite (أوجمنتين moves from «علبة مكسورة أو تالفة» to «مرتجع بانتظار المورد»). The missing supplier credit has no screen: closing the return changes nothing on the supplier page.</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="D15.png"><img loading="lazy" decoding="async" alt="D15 design" src="D15.png"></a> <a href="D15.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>D16 · Supplier on approve</h3>
+<p>المورد عند الاعتماد</p>
+<p>Design: an unanswered «يمكن تقصد…؟» silently creates a new supplier. Buret: approve waits for the answer.</p>
+<p><strong>Where:</strong></p>
+<p>النواقص والمشتريات ← فواتير الشراء ← مسودة ← «يمكن تقصد: المتحدة للصيادلة؟» (بدون رد) ← «اعتماد الفاتورة» ← الموردون</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<p><strong>Note:</strong> Approved without answering the prompt: the supplier list now has «المتحده للصيادله» (the printed spelling) next to the existing «المتحدة للصيادلة».</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="D16.png"><img loading="lazy" decoding="async" alt="D16 design" src="D16.png"></a> <a href="D16.webm">video</a></td><td>not built yet</td></tr></tbody></table></div>
+<h3>D17 · Labels after approve</h3>
+<p>الملصقات بعد الاعتماد</p>
+<p>Design: the label price comes from an older batch. Buret: the new batch's own price.</p>
+<p><strong>Where:</strong></p>
+<p>النواقص والمشتريات ← فواتير الشراء ← مسودة ← «اعتماد الفاتورة» ← «طباعة الباركود الداخلي»</p>
+<p><strong>Role:</strong> owner (صاحب الحساب)</p>
+<p><strong>Note:</strong> First row: the bill line says «سعر الجمهور» 84.00; the label prints 76.00, the price of a batch already in stock.</p>
+<div class="tw"><table><thead><tr><th>Design</th><th>Buret</th></tr></thead><tbody><tr><td><a href="D17.png"><img loading="lazy" decoding="async" alt="D17 design" src="D17.png"></a> <a href="D17.webm">video</a></td><td>not built yet</td></tr></tbody></table></div></article></main>
+<script src="../_share/viewer.js?v=1793050235" defer></script></body></html>

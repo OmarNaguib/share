@@ -1,0 +1,401 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark"><meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0e0f13" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../_share/icon.svg?v=1793050235"><link rel="stylesheet" href="../_share/app.css?v=1793050235">
+<title>Buret: questions for the product team</title><script>document.documentElement.classList.add("js")</script></head><body class="">
+<header class="bar"><nav class="crumbs"><a href="../" class="home">share</a><span class="sep">/</span><a href="../buret-review/">buret-review</a></nav></header>
+<main><article class="prose doc"><h1>Buret: questions for the product team</h1>
+<p><a href="product-questions.ar.md.html">اقرأ بالعربية</a></p>
+<p>This Markdown page shows screenshots only. For the videos inline, open the page version: <a href="product-questions.html">product-questions.html</a></p>
+<p>31 October 2026</p>
+<p>These are the open questions from our review of the design. Each one says what the design does today, what we need you to decide, and what we suggest.</p>
+<p>If we don't hear back, we build our suggestion. You can still change it later. A few items say "Until you answer" instead: there, we build that until you decide.</p>
+<p>Each item has a screenshot and a short video of the design at that spot. A red outline marks the place.</p>
+<p>Questions are grouped by who should answer them. Inside each group, they follow the order we build in: sales and customers first, then stock and purchasing, then setup, then later work. Please answer the early ones first.</p>
+<p>The small code next to each title (like PQ-14) is only there so you can point to it when you reply.</p>
+<p><strong>Words we use</strong></p>
+<ul>
+<li><strong>Batch (تشغيلة):</strong> boxes of one item that came in together, with one expiry date, one cost and one price.</li>
+<li><strong>Not for sale (ليس للبيع):</strong> stock taken off sale but still in the pharmacy. Putting it there is called setting it aside.</li>
+<li><strong>Write-off (إعدام):</strong> destroying not-for-sale stock, which removes it from stock.</li>
+<li><strong>Count (جرد):</strong> staff count what is on the shelves and compare it with what Buret expects. Posting («ترحيل») closes the count.</li>
+<li><strong>Credit (آجل):</strong> the customer pays later; the amount goes on their account, up to their credit limit.</li>
+<li><strong>Collection (تحصيل):</strong> money received later, for a credit balance or a delivery order.</li>
+<li><strong>Drawer (الدرج):</strong> the cash drawer of one till, handed over from shift to shift.</li>
+<li><strong>Contract (تعاقد):</strong> an agreement with a company or insurer that pays part of its members' purchases.</li>
+<li><strong>Reorder list (كشكول النواقص):</strong> the list of items the pharmacy needs to buy.</li>
+<li><strong>B-Connect:</strong> the system the pharmacies use today. Buret replaces it.</li>
+<li><strong>First version, trial:</strong> the first version is what the first pharmacies get. The trial is those first pharmacies using it.</li>
+</ul>
+<h2>Moaz (flows and scope)</h2>
+<h3>Sales, returns, customers and the cash drawer</h3>
+<h4><code>O-P1</code> What each role may do, and its highest discount</h4>
+<p><strong>What the design does today:</strong> The permissions tab in the design is not final. The ready-made cashier setting there cannot sell, which looks wrong.</p>
+<p><strong>What we need you to decide:</strong> What may each role do from the start? What is the highest discount each role may give?</p>
+<p><strong>Our suggestion:</strong> Use the design's sample values: owner has no limit, manager 100%, pharmacist 10%, cashier 0%. The cashier can sell on the sales screen and use the drawer (here we follow the design's list of permissions, not its ready-made cashier setting). The owner can change any of this for each person.</p>
+<p><em>No screenshot: the design has no screen for this.</em></p>
+<h4><code>PQ-3</code> What must not be sold</h4>
+<p><strong>What the design does today:</strong> The design shows a «موقوف البيع» (stop-sale) badge on an item, but still lets you sell it.</p>
+<p><strong>What we need you to decide:</strong> Which stock must never be sold: only expired batches, or also stock close to expiry and items marked «موقوف البيع»? Can anyone ever override this?</p>
+<p><strong>Our suggestion:</strong> An expired batch is never sold, by anyone. No override. An item marked «موقوف البيع» can't be added to a new invoice; it shows as not for sale. If it is already on an open invoice, Buret flags it when the sale is finished. Stock close to expiry sells as usual, with the usual warning.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot PQ-3" src="PQ-3.png"></p>
+<p><a href="PQ-3.webm">Video PQ-3</a></p>
+<h4><code>PQ-4</code> Extra prices on the item card («الأسعار المتاحة»)</h4>
+<p><em>Also affects the item card.</em></p>
+<p><strong>What the design does today:</strong> The item card has a «الأسعار المتاحة» list of extra prices, added with «إضافة سعر». These prices are not tied to a batch.</p>
+<p><strong>What we need you to decide:</strong> What are these extra prices for? Who may choose one at the till? Should each price belong to a batch?</p>
+<p><strong>Our suggestion:</strong> Leave them out of the first version. On the sales screen, the price list shows batch prices only. Choosing one is saved as a choice of batch. A refund always uses the price the customer actually paid.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot PQ-4" src="PQ-4.png"></p>
+<p><a href="PQ-4.webm">Video PQ-4</a></p>
+<h4><code>PQ-2</code> Rounding cash to 25 or 50 piasters</h4>
+<p><strong>What the design does today:</strong> The design shows exact amounts, down to the piaster.</p>
+<p><strong>What we need you to decide:</strong> Should cash totals be rounded to the nearest 25 or 50 piasters («تقريب النقدية»)? If yes, the accountant must also say where the small difference is recorded.</p>
+<p><strong>Our suggestion:</strong> No rounding. Exact piasters, as in the design.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot PQ-2" src="PQ-2.png"></p>
+<p><a href="PQ-2.webm">Video PQ-2</a></p>
+<h4><code>PQ-17</code> Open invoices when the drawer is handed over or someone logs out</h4>
+<p><strong>What the design does today:</strong> If invoices are still open at drawer handover, at logout, or when the browser tab is closed, the design drops them without a word.</p>
+<p><strong>What we need you to decide:</strong> Should Buret warn, keep the invoices, or stop the action?</p>
+<p><strong>Our suggestion:</strong> Open invoices stay saved for the person who made them. Handover and logout show a warning with a list of them. Deleting an invoice that has items asks for confirmation first.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot PQ-17" src="PQ-17.png"></p>
+<p><a href="PQ-17.webm">Video PQ-17</a></p>
+<h4><code>PQ-16</code> Printing a finished sale's receipt again</h4>
+<p><strong>What the design does today:</strong> The «فواتير البيع» page has no print button.</p>
+<p><strong>What we need you to decide:</strong> May staff print a receipt again? Who may do it? Should the reprint say it is a copy?</p>
+<p><strong>Our suggestion:</strong> Add «طباعة نسخة» in «فواتير البيع». The receipt prints marked «نسخة». Allowed for the owner, manager and pharmacist.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot PQ-16" src="PQ-16.png"></p>
+<p><a href="PQ-16.webm">Video PQ-16</a></p>
+<h4><code>PQ-19</code> When a customer can no longer buy on credit («آجل»)</h4>
+<p><strong>What the design does today:</strong> The design marks this rule as not decided yet.</p>
+<p><strong>What we need you to decide:</strong> Does credit stop only when the customer reaches their credit limit? Or also when a debt is overdue by more than a set number of days?</p>
+<p><strong>Our suggestion:</strong> Only at the credit limit. We can add a rule for overdue debt later.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot PQ-19" src="PQ-19.png"></p>
+<p><a href="PQ-19.webm">Video PQ-19</a></p>
+<h4><code>PQ-29</code> Showing the credit a customer has left, on the sales screen</h4>
+<p><strong>What the design does today:</strong> The design refuses a credit sale only at the very end, when the cashier finishes the sale.</p>
+<p><strong>What we need you to decide:</strong> When the cashier picks credit as the payment, should Buret show how much credit the customer has left, before the sale is finished?</p>
+<p><strong>Our suggestion:</strong> Yes. Show the credit left, and whether the customer has overdue debt, in the credit payment.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot PQ-29" src="PQ-29.png"></p>
+<p><a href="PQ-29.webm">Video PQ-29</a></p>
+<h4><code>PQ-22</code> Giving the money back as a balance («رصيد للعميل»)</h4>
+<p><strong>What the design does today:</strong> The design's return screens offer no way to give the money back as a balance.</p>
+<p><strong>What we need you to decide:</strong> When a cash, card or delivery sale is returned, can the money go to the customer as a balance to spend later?</p>
+<p><strong>Our suggestion:</strong> No balance refunds in the first version. The money goes back in cash or the way the customer paid. When a credit invoice is returned, the return first lowers what the customer owes (see D4).</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot PQ-22" src="PQ-22.png"></p>
+<p><a href="PQ-22.webm">Video PQ-22</a></p>
+<h4><code>PQ-23</code> Points when items are returned</h4>
+<p><strong>What the design does today:</strong> In the design, a return does not touch the customer's points. Omar decided that Buret takes back the points earned on the returned items.</p>
+<p><strong>What we need you to decide:</strong> Please confirm this rule.</p>
+<p><strong>Our suggestion:</strong> Take back the earned points in proportion to what was returned, rounded down.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot PQ-23" src="PQ-23.png"></p>
+<p><a href="PQ-23.webm">Video PQ-23</a></p>
+<h4><code>PQ-25</code> Points on credit («آجل») sales</h4>
+<p><strong>What the design does today:</strong> In the design, a credit sale earns points and lets the customer spend points right away.</p>
+<p><strong>What we need you to decide:</strong> Should credit sales earn or use points?</p>
+<p><strong>Our suggestion:</strong> No. Credit sales don't earn or use points until you decide otherwise (Omar's choice).</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot PQ-25" src="PQ-25.png"></p>
+<p><a href="PQ-25.webm">Video PQ-25</a></p>
+<h4><code>PQ-24</code> Changing how long points last</h4>
+<p><strong>What the design does today:</strong> The points rules have a setting «النقاط تنتهي بعد N يوم» (points end after N days).</p>
+<p><strong>What we need you to decide:</strong> If someone changes this number, does it affect points customers already earned?</p>
+<p><strong>Our suggestion:</strong> No. The new number applies only to points earned after the change.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot PQ-24" src="PQ-24.png"></p>
+<p><a href="PQ-24.webm">Video PQ-24</a></p>
+<h4><code>PQ-26</code> Order of discounts when there is a contract</h4>
+<p><strong>What the design does today:</strong> When an invoice has a contract («تعاقد»), the design applies discounts in this order: first each line's discount, then the contract discount, then the invoice discount and the points discount.</p>
+<p><strong>What we need you to decide:</strong> Is this order right?</p>
+<p><strong>Our suggestion:</strong> Keep the design's order.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot PQ-26" src="PQ-26.png"></p>
+<p><a href="PQ-26.webm">Video PQ-26</a></p>
+<h4><code>PQ-27</code> Taking the contract from the customer</h4>
+<p><strong>What the design does today:</strong> The contract screen says a customer's contract applies by itself when you pick the customer. But on the sales screen, the cashier must pick the contract by hand. The two don't match.</p>
+<p><strong>What we need you to decide:</strong> Which one is right?</p>
+<p><strong>Our suggestion:</strong> The cashier picks the contract by hand. The customer's own contracts appear first in the list.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot PQ-27" src="PQ-27.png"></p>
+<p><a href="PQ-27.webm">Video PQ-27</a></p>
+<h4><code>PQ-30</code> Receipt for a credit payment («تحصيل»)</h4>
+<p><strong>What the design does today:</strong> A collection («تحصيل») is money a customer pays toward what they owe. It is taken on the «تحصيل من …» screen in «الحسابات الآجلة».</p>
+<p><strong>What we need you to decide:</strong> Should a collection print a receipt?</p>
+<p><strong>Our suggestion:</strong> Yes, with its own receipt number.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot PQ-30" src="PQ-30.png"></p>
+<p><a href="PQ-30.webm">Video PQ-30</a></p>
+<h3>Stock, counting and purchasing</h3>
+<h4><code>PQ-9</code> Posting a count («ترحيل الجرد»)</h4>
+<p><strong>What the design does today:</strong> In the design, «ترحيل الجرد» only marks the count as posted. Stock does not change.</p>
+<p><strong>What we need you to decide:</strong> Should posting change stock to match what was counted? If yes: when units are missing («عجز الجرد») or extra («زيادة الجرد»), which expiry date are they taken from or added to?</p>
+<p><strong>Until you answer, we build:</strong> Omar left this open, so there is no default yet. Posting only marks the count as posted, as in the design.</p>
+<p><strong>Our suggestion:</strong> Posting corrects stock. Missing units come off the earliest expiry first. Extra units go to the latest expiry in that store.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot PQ-9" src="PQ-9.png"></p>
+<p><a href="PQ-9.webm">Video PQ-9</a></p>
+<h4><code>PQ-7</code> A count finds an expiry date that has no batch</h4>
+<p><strong>What the design does today:</strong> During a count, staff can add an expiry date that Buret doesn't have («إضافة تاريخ صلاحية»). The design doesn't say what happens to it when the count is posted.</p>
+<p><strong>What we need you to decide:</strong> Does posting create a new batch for it? At what cost? Who must approve it?</p>
+<p><strong>Until you answer, we build:</strong> Omar left this open, so there is no default yet. The row is saved, and stock does not change.</p>
+<p><strong>Our suggestion:</strong> Create a new batch marked «من الجرد», at the last purchase cost. Only a manager can do this.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot PQ-7" src="PQ-7.png"></p>
+<p><a href="PQ-7.webm">Video PQ-7</a></p>
+<h4><code>PQ-15</code> After a write-off («إعدام»): tell someone, or wait for approval?</h4>
+<p><strong>What the design does today:</strong> After a write-off, the design shows the message «تم إبلاغ المدير» (the manager was told). But nothing is sent. The notification bell also shows a sample item «إعدام بانتظار الموافقة» (write-off waiting for approval).</p>
+<p><strong>What we need you to decide:</strong> Should a write-off notify someone, for example the owner? Or should it wait for approval before it takes effect?</p>
+<p><strong>Our suggestion:</strong> It takes effect right away, with no notice and no approval, as in the design.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot PQ-15" src="PQ-15.png"></p>
+<p><a href="PQ-15.webm">Video PQ-15</a></p>
+<h4><code>PQ-14</code> The «إعدام» tab on the «ليس للبيع» page</h4>
+<p><strong>What the design does today:</strong> The «ليس للبيع» page has a «إعدام» tab. No step in the design puts anything in it.</p>
+<p><strong>What we need you to decide:</strong> What belongs in this tab?</p>
+<p><strong>Our suggestion:</strong> Follow the design's sample data: items set aside as «منتهي الصلاحية» or «صنف ممنوع تداوله» appear under «إعدام».</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot PQ-14" src="PQ-14.png"></p>
+<p><a href="PQ-14.webm">Video PQ-14</a></p>
+<h4><code>PQ-12</code> Deleting an item</h4>
+<p><strong>What the design does today:</strong> After an item is deleted, the design shows «تراجع» (undo) for 5 seconds. After that, the item is gone.</p>
+<p><strong>What we need you to decide:</strong> Are 5 seconds enough? Or should deleted items stay visible and be restorable later? Who may delete items?</p>
+<p><strong>Our suggestion:</strong> Only the 5-second undo, with no page to restore deleted items. Only people with the «حذف صنف» permission can delete (see D2).</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot PQ-12" src="PQ-12.png"></p>
+<p><a href="PQ-12.webm">Video PQ-12</a></p>
+<h4><code>PQ-13</code> Two batches with the same expiry date</h4>
+<p><strong>What the design does today:</strong> An item can have two batches with the same expiry date but a different price or cost. The screenshot shows where an item's batches are listed («تواريخ الصلاحية»).</p>
+<p><strong>What we need you to decide:</strong> Should they show as separate rows?</p>
+<p><strong>Our suggestion:</strong> One row per batch on the stock page, as in the design. Counting and setting stock aside group batches by expiry date.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot PQ-13" src="PQ-13.png"></p>
+<p><a href="PQ-13.webm">Video PQ-13</a></p>
+<h4><code>PQ-37</code> Cancelling an approved purchase invoice</h4>
+<p><strong>What the design does today:</strong> In the design, an approved purchase invoice opens read-only («معتمدة — للعرض فقط»). It can't be edited or cancelled.</p>
+<p><strong>What we need you to decide:</strong> Do you need a way to reverse a purchase invoice after it is approved?</p>
+<p><strong>Our suggestion:</strong> No. Fix mistakes with a return to the supplier.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot PQ-37" src="PQ-37.png"></p>
+<p><a href="PQ-37.webm">Video PQ-37</a></p>
+<h4><code>PQ-39</code> An order sent to a supplier that never arrives</h4>
+<p><strong>What the design does today:</strong> Once an item is ordered from a supplier, it is hidden from «كشكول النواقص» and from the suggestions until the purchase invoice arrives. If the order never comes, the item stays hidden forever. The design has no way to cancel a sent order.</p>
+<p><strong>What we need you to decide:</strong> Should a sent order be cancellable? Should it expire after some time, or remind someone?</p>
+<p><strong>Until you answer, we build:</strong> As in the design.</p>
+<p><strong>Our suggestion:</strong> Each line of a sent order can be cancelled with the reason «لم يتوفر لدى المورد». The item then goes back to «كشكول النواقص».</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot PQ-39" src="PQ-39.png"></p>
+<p><a href="PQ-39.webm">Video PQ-39</a></p>
+<h4><code>PQ-40</code> The same supplier bill entered twice</h4>
+<p><strong>What the design does today:</strong> The design doesn't check for this. You can enter a bill with a number already used for the same supplier, and nothing warns you.</p>
+<p><strong>What we need you to decide:</strong> If the same supplier and bill number are entered again, should Buret warn, or block it?</p>
+<p><strong>Until you answer, we build:</strong> As in the design (no check).</p>
+<p><strong>Our suggestion:</strong> Warn when the supplier and bill number match an earlier bill.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot PQ-40" src="PQ-40.png"></p>
+<p><a href="PQ-40.webm">Video PQ-40</a></p>
+<h4><code>PQ-41</code> Draft purchase invoices: shared or personal</h4>
+<p><strong>What the design does today:</strong> The design lists everyone's drafts together («مسودات بانتظار المراجعة»). A draft doesn't show who made it, and two people can open it at the same time.</p>
+<p><strong>What we need you to decide:</strong> Should drafts be shared by everyone, or belong to the person who made them?</p>
+<p><strong>Our suggestion:</strong> Shared, as in the design, and saved automatically.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot PQ-41" src="PQ-41.png"></p>
+<p><a href="PQ-41.webm">Video PQ-41</a></p>
+<h4><code>PQ-42</code> Supplier minimum order («حد الطلبية»)</h4>
+<p><strong>What the design does today:</strong> The supplier page stores and shows a minimum order amount. Nothing uses it.</p>
+<p><strong>What we need you to decide:</strong> Should it do something? For example, warn when an order is below it.</p>
+<p><strong>Our suggestion:</strong> Store it and show it. Nothing more.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot PQ-42" src="PQ-42.png"></p>
+<p><a href="PQ-42.webm">Video PQ-42</a></p>
+<h4><code>PQ-43</code> Where does «أعلى خصم» come from?</h4>
+<p><strong>What the design does today:</strong> «كشكول النواقص» has a «أعلى خصم» (best discount) column. Today it shows sample data only.</p>
+<p><strong>What we need you to decide:</strong> Where should the number come from: the last purchase invoice line, or a list of supplier offers? Or should we drop the column?</p>
+<p><strong>Until you answer, we build:</strong> Not built yet.</p>
+<p><strong>Our suggestion:</strong> Take it from the latest approved purchase invoice line for that supplier and item. Hide it when there is none.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot PQ-43" src="PQ-43.png"></p>
+<p><a href="PQ-43.webm">Video PQ-43</a></p>
+<h3>Setup and moving from B-Connect</h3>
+<h4><code>PQ-31</code> Bringing customers and their balances from B-Connect</h4>
+<p><strong>What the design does today:</strong> In the design, moving a pharmacy from B-Connect takes six steps. They end at «المخزون المنقول» (stock moved). None of them covers customers or what they owe.</p>
+<p><strong>What we need you to decide:</strong> What should the step that reviews the moved customers look like?</p>
+<p><strong>Our suggestion:</strong> Customers, their credit terms, and one opening balance each (dated on the day of the move) are brought in. A review step lists them. We build that step from the design's existing parts.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot PQ-31" src="PQ-31.png"></p>
+<p><a href="PQ-31.webm">Video PQ-31</a></p>
+<h3>Later</h3>
+<h4><code>PQ-1</code> Login: B-Connect username and password, or name and PIN</h4>
+<p><strong>What the design does today:</strong> The design's login screen is only a placeholder («شاشة الدخول لم تُصمَّم بعد»). The first version starts with the usernames and passwords people already use in B-Connect.</p>
+<p><strong>What we need you to decide:</strong> Keep that for the long term? Or move to picking your name and typing a short PIN on shared tills?</p>
+<p><strong>Our suggestion:</strong> The first version works as above. A new pharmacy (not moving from B-Connect) creates passwords at first login. Name and PIN can come after the trial, if you want it.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot PQ-1" src="PQ-1.png"></p>
+<p><a href="PQ-1.webm">Video PQ-1</a></p>
+<h2>Mostafa (design)</h2>
+<p>Most items here are places where Buret will work differently from the design on purpose. Omar decided each one on 30 October 2026. "The design" is what the screens do today. "Buret" is what we will build. Mostafa: please check that the screens still make sense. Many of these are also rules about stock or money, so Moaz, please confirm them too. Two items are open questions: PQ-32 and PQ-46.</p>
+<h3>Sales, returns, customers and the cash drawer</h3>
+<h4><code>PQ-32</code> The words «العملاء المدينين» and «مدينين»</h4>
+<p><strong>What the design does today:</strong> The «الحسابات الآجلة» page uses «العملاء المدينين» and «مدينين». The design's own language rule keeps «مدين» for the accounting pages only (the journal and the trial balance).</p>
+<p><strong>What we need you to decide:</strong> Keep these labels, or reword them?</p>
+<p><strong>Our suggestion:</strong> Keep them as designed.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot PQ-32" src="PQ-32.png"></p>
+<p><a href="PQ-32.webm">Video PQ-32</a></p>
+<h4><code>D3</code> Editing a delivery order</h4>
+<p><strong>The design:</strong> The lines of a registered delivery order are changed in place.</p>
+<p><strong>What Buret will do:</strong> Same screens. But each change is saved as a new entry: a stock correction and a new version of the receipt. The sale becomes final at «تحصيل», when the money is collected.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot D3" src="D3.png"></p>
+<p><a href="D3.webm">Video D3</a></p>
+<h4><code>D4</code> Returning a credit («آجل») invoice</h4>
+<p><strong>The design:</strong> It always offers a «نقدي» (cash) refund, even when the customer hasn't paid yet.</p>
+<p><strong>What Buret will do:</strong> The return first lowers what the customer owes. Cash goes back only for the part they already paid.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot D4" src="D4.png"></p>
+<p><a href="D4.webm">Video D4</a></p>
+<h4><code>D5</code> Discount limits</h4>
+<p><strong>The design:</strong> Fixed limits of 20% per line and 10% per invoice apply to everyone, even the owner.</p>
+<p><strong>What Buret will do:</strong> The owner may go above them. They apply to everyone else.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot D5" src="D5.png"></p>
+<p><a href="D5.webm">Video D5</a></p>
+<h4><code>D6</code> Return period</h4>
+<p><strong>The design:</strong> «مدة الاسترجاع» is printed on the receipt but never checked. Anyone can change it on the returns page.</p>
+<p><strong>What Buret will do:</strong> The period is enforced. A late return needs a special permission and is recorded. The setting moves off the returns page.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot D6" src="D6.png"></p>
+<p><a href="D6.webm">Video D6</a></p>
+<h4><code>D7</code> Controlled drugs («صنف جدول»)</h4>
+<p><strong>The design:</strong> When a controlled drug is sold, the three check boxes are not saved, and the «بيع صنف جدول» permission is never checked.</p>
+<p><strong>What Buret will do:</strong> The three ticks are saved with the sale, and the permission is checked.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot D7" src="D7.png"></p>
+<p><a href="D7.webm">Video D7</a></p>
+<h4><code>D8</code> The cashier's menu</h4>
+<p><strong>The design:</strong> A cashier sees every page under «البيع».</p>
+<p><strong>What Buret will do:</strong> The menu shows only what the cashier may use. What a role can't use is hidden, not greyed out.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot D8" src="D8.png"></p>
+<p><a href="D8.webm">Video D8</a></p>
+<h4><code>D9</code> Deleting a customer</h4>
+<p><strong>The design:</strong> «حذف» removes the customer, without checking whether they owe money.</p>
+<p><strong>What Buret will do:</strong> Same screen, but the customer is archived; their history and account are kept. Buret refuses while they owe money.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot D9" src="D9.png"></p>
+<p><a href="D9.webm">Video D9</a></p>
+<h4><code>D10</code> Who may change customer settings</h4>
+<p><strong>The design:</strong> Every role can edit customers, credit limits, points rules and contracts.</p>
+<p><strong>What Buret will do:</strong> Each of these has its own permission. Quickly adding a customer from the sales screen stays open to everyone.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot D10" src="D10.png"></p>
+<p><a href="D10.webm">Video D10</a></p>
+<h4><code>D11</code> Credit payments and the drawer</h4>
+<p><strong>The design:</strong> Cash from a «تحصيل» never counts in the cash the drawer should hold.</p>
+<p><strong>What Buret will do:</strong> It counts, so collections don't show up as extra cash in the drawer.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot D11" src="D11.png"></p>
+<p><a href="D11.webm">Video D11</a></p>
+<h4><code>D12</code> Discounts bigger than the total</h4>
+<p><strong>The design:</strong> If discounts add up to more than the invoice total, the design shows the total as 0.</p>
+<p><strong>What Buret will do:</strong> Buret refuses the invoice.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot D12" src="D12.png"></p>
+<p><a href="D12.webm">Video D12</a></p>
+<h4><code>D13</code> Points on credit sales</h4>
+<p><strong>The design:</strong> Points are earned and spent right away.</p>
+<p><strong>What Buret will do:</strong> No points until PQ-25 is answered.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot D13" src="D13.png"></p>
+<p><a href="D13.webm">Video D13</a></p>
+<h4><code>D14</code> Points on a return</h4>
+<p><strong>The design:</strong> Points don't change.</p>
+<p><strong>What Buret will do:</strong> Points earned on the returned items are taken back (see PQ-23).</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot D14" src="D14.png"></p>
+<p><a href="D14.webm">Video D14</a></p>
+<h3>Stock, counting and purchasing</h3>
+<h4><code>PQ-44</code> The «طلبية مفتوحة — لم تُرسل بعد» card</h4>
+<p><strong>What the design does today:</strong> On «كشكول النواقص», this card fills only when you press Ctrl+Enter. When it is empty, its text points to a button that doesn't exist.</p>
+<p><strong>What we need you to decide:</strong> Keep the card, or remove it?</p>
+<p><strong>Until you answer, we build:</strong> Keep it as designed.</p>
+<p><strong>Our suggestion:</strong> Remove it, and keep one way to order: «طلب من مورد».</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot PQ-44" src="PQ-44.png"></p>
+<p><a href="PQ-44.webm">Video PQ-44</a></p>
+<h4><code>PQ-46</code> Reading a bill photo: waiting and failure</h4>
+<p><strong>What the design does today:</strong> When staff upload a photo of a supplier bill, the design opens a filled draft at once. It shows nothing while the bill is being read, and nothing if reading fails. (Omar has already chosen the service that reads the bills.)</p>
+<p><strong>What we need you to decide:</strong> What should staff see while a bill is being read? And when reading fails?</p>
+<p><strong>Until you answer, we build:</strong> Nothing is drawn yet.</p>
+<p><strong>Our suggestion:</strong> A simple waiting state that says the bill is being read. If reading fails, an empty draft to fill in by hand, with a short message.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot PQ-46" src="PQ-46.png"></p>
+<p><a href="PQ-46.webm">Video PQ-46</a></p>
+<h4><code>D1</code> Who may write off stock</h4>
+<p><strong>The design:</strong> The manager role may write off stock directly.</p>
+<p><strong>What Buret will do:</strong> Write-off («إعدام») is its own permission. By default, the manager and the owner have it.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot D1" src="D1.png"></p>
+<p><a href="D1.webm">Video D1</a></p>
+<h4><code>D2</code> Who may delete an item</h4>
+<p><strong>The design:</strong> The «حذف صنف» permission exists but is never checked. Anyone can delete.</p>
+<p><strong>What Buret will do:</strong> The permission is checked.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot D2" src="D2.png"></p>
+<p><a href="D2.webm">Video D2</a></p>
+<h4><code>D15</code> Closing a return to a supplier</h4>
+<p><strong>The design:</strong> When the supplier's answer is recorded, nothing is taken off what the pharmacy owes that supplier. Also, «مرتجع للمورد» replaces the original reason the stock was set aside.</p>
+<p><strong>What Buret will do:</strong> The value the supplier accepts is taken off what the pharmacy owes that supplier, and the original reason is kept. «السعر» starts at the batch cost (this copy of the design already fills it in).</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot D15" src="D15.png"></p>
+<p><a href="D15.webm">Video D15</a></p>
+<h4><code>D16</code> The supplier when a bill is approved</h4>
+<p><strong>The design:</strong> If the «يمكن تقصد…؟» (did you mean…?) question is left unanswered, approving creates a new supplier.</p>
+<p><strong>What Buret will do:</strong> Approving waits until the question is answered.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot D16" src="D16.png"></p>
+<p><a href="D16.webm">Video D16</a></p>
+<h4><code>D17</code> Price labels after a bill is approved</h4>
+<p><strong>The design:</strong> The label prints the price of an older batch.</p>
+<p><strong>What Buret will do:</strong> The label prints the new batch's own price.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot D17" src="D17.png"></p>
+<p><a href="D17.webm">Video D17</a></p>
+<h2>Pharmacist</h2>
+<h3>Sales, returns, customers and the cash drawer</h3>
+<h4><code>PQ-21</code> Controlled-drug register («دفتر»)</h4>
+<p><strong>What the design does today:</strong> When a controlled drug («صنف جدول») is sold, the design asks for three ticks («صنف جدول في الفاتورة»).</p>
+<p><strong>What we need you to decide:</strong> Does the law require a register beyond these three ticks? If yes, what must it hold?</p>
+<p><strong>Our suggestion:</strong> Save the three ticks with the sale. No register in the first version.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot PQ-21" src="PQ-21.png"></p>
+<p><a href="PQ-21.webm">Video PQ-21</a></p>
+<h3>Stock, counting and purchasing</h3>
+<h4><code>PQ-11</code> Rules for writing off stock («الإعدام»)</h4>
+<p><strong>What the design does today:</strong> In the design, a manager writes off stock and prints a «محضر إعدام أصناف» (write-off report).</p>
+<p><strong>What we need you to decide:</strong> Do Egyptian rules require more than this? For example, a committee, a form from the health directorate, or special rules for controlled drugs.</p>
+<p><strong>Our suggestion:</strong> A manager alone, an optional photo, and «توقيع المدير» on the printed «محضر إعدام أصناف».</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot PQ-11" src="PQ-11.png"></p>
+<p><a href="PQ-11.webm">Video PQ-11</a></p>
+<h4><code>PQ-38</code> Discount % and bonus boxes on supplier bills</h4>
+<p><strong>What the design does today:</strong> The design links them. On a bill line, a 10% discount on 50 boxes adds 5 bonus («بونص») boxes by itself. The same % also lowers the pharmacist price.</p>
+<p><strong>What we need you to decide:</strong> Is that how supplier bills really work?</p>
+<p><strong>Our suggestion:</strong> Keep them linked, as designed.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot PQ-38" src="PQ-38.png"></p>
+<p><a href="PQ-38.webm">Video PQ-38</a></p>
+<h4><code>PQ-36</code> Receiving expired or nearly expired stock</h4>
+<p><strong>What the design does today:</strong> The design doesn't check expiry dates when a bill is received. The sample bill even has an expired line, and nothing flags it.</p>
+<p><strong>What we need you to decide:</strong> Should Buret block such stock, or allow it with a warning? (Moaz may also have a view.)</p>
+<p><strong>Our suggestion:</strong> Allow it, and flag it on the review screen. Expired stock can never be sold.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot PQ-36" src="PQ-36.png"></p>
+<p><a href="PQ-36.webm">Video PQ-36</a></p>
+<h4><code>PQ-8</code> Items with no expiry date («بدون صلاحية»)</h4>
+<p><em>Also affects moving from B-Connect.</em></p>
+<p><strong>What the design does today:</strong> The design has no «بدون صلاحية» option. Every batch has an expiry date, so there is no screenshot for this one.</p>
+<p><strong>What we need you to decide:</strong> Which kinds of items may have no expiry date? Are they sold like any other item?</p>
+<p><strong>Our suggestion:</strong> Any item can be marked «بدون صلاحية», as in B-Connect. Its batches sell normally, after the batches that have a date. When data is brought in from B-Connect, Buret flags undated batches on items that should have a date.</p>
+<p><em>No screenshot: the design has no screen for this.</em></p>
+<h2>Accountant</h2>
+<h3>Stock, counting and purchasing</h3>
+<h4><code>PQ-33</code> VAT on purchases: before or after the invoice discount?</h4>
+<p><strong>What the design does today:</strong> On a purchase invoice, the design adds VAT («ض.ق.م») on each line first, then takes the invoice discount off the total. So «إجمالي ض.ق.م» (total VAT) does not change when there is a discount.</p>
+<p><strong>What we need you to decide:</strong> Is that right, or should VAT be worked out after the discount?</p>
+<p><strong>Until you answer, we build:</strong> As in the design: VAT before the discount. VAT is stored exactly on each line, and the invoice discount is spread across the lines.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot PQ-33" src="PQ-33.png"></p>
+<p><a href="PQ-33.webm">Video PQ-33</a></p>
+<h4><code>PQ-35</code> A bill total that doesn't match the sum of its lines</h4>
+<p><strong>What the design does today:</strong> At approval, the design warns when the printed bill total and the sum of the lines differ («الفرق: … — راجع السطور»), and still allows approving.</p>
+<p><strong>What we need you to decide:</strong> When they differ, which amount does the pharmacy owe the supplier?</p>
+<p><strong>Our suggestion:</strong> The sum of the lines. Buret warns and allows approving, and the difference stays visible.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot PQ-35" src="PQ-35.png"></p>
+<p><a href="PQ-35.webm">Video PQ-35</a></p>
+<h4><code>PQ-34</code> The value of a return to a supplier</h4>
+<p><strong>What the design does today:</strong> When the supplier's answer is recorded, the design fills «السعر» with the batch's purchase cost and lets you edit it. «قيمة المقبول» (accepted value) = accepted quantity × that price.</p>
+<p><strong>What we need you to decide:</strong> Should the return be valued at the batch cost, or at the price the supplier accepts?</p>
+<p><strong>Our suggestion:</strong> «السعر» starts at the batch cost and can be edited. The accepted value is taken off what the pharmacy owes the supplier.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot PQ-34" src="PQ-34.png"></p>
+<p><a href="PQ-34.webm">Video PQ-34</a></p>
+<h4><code>PQ-45</code> How long bill photos are kept</h4>
+<p><strong>What the design does today:</strong> Staff can upload a photo of each supplier bill. The design says nothing about how long photos are kept.</p>
+<p><strong>What we need you to decide:</strong> How long must we keep them?</p>
+<p><strong>Our suggestion:</strong> As long as the invoice exists.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot PQ-45" src="PQ-45.png"></p>
+<p><a href="PQ-45.webm">Video PQ-45</a></p>
+<h3>Later</h3>
+<h4><code>PQ-6</code> VAT and tax reports</h4>
+<p><em>Reports.</em></p>
+<p><strong>What the design does today:</strong> The design has a monthly VAT page («الضرائب»).</p>
+<p><strong>What we need you to decide:</strong> Does Buret need VAT or tax reports, for the pharmacy's accountant or for electronic invoicing? Or is correct VAT on each purchase line enough?</p>
+<p><strong>Our suggestion:</strong> VAT is stored correctly on each purchase line. No tax reports in the first version. The tax authority's electronic receipt comes in the second version.</p>
+<p><img loading="lazy" decoding="async" alt="Screenshot PQ-6" src="PQ-6.png"></p>
+<p><a href="PQ-6.webm">Video PQ-6</a></p>
+<h2>Already decided by Omar (for your information)</h2>
+<ul>
+<li>Moving stock to another store: while it is on its way it sits in a middle «في الطريق» (in transit) place. It cannot be sold from the sender, and the receiver gets it when they confirm receipt.</li>
+<li>Moaz confirmed: the first version is for a single pharmacy. Several pharmacies (chain mode) come right after, as their own step.</li>
+<li>Customer returns go back to stock, into the batch they were sold from.</li>
+<li>Medicine prices come from the batch received and are never edited. Changing the price of a non-medicine item needs a permission.</li>
+<li>The strip price is set once per batch: box price ÷ number of strips, rounded.</li>
+<li>One payment method per invoice. No split payment.</li>
+<li>Receipts print as an image, so Arabic letters join correctly.</li>
+</ul></article></main>
+<script src="../_share/viewer.js?v=1793050235" defer></script></body></html>
