@@ -1,0 +1,752 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>بوريت: أسئلة لفريق المنتج</title>
+<style>
+:root{--fg:#1d1d1f;--mut:#6e6e73;--bg:#fafafa;--card:#fff;--line:#e3e3e8;--acc:#0b6bcb;--tag:#eef3fb}
+@media (prefers-color-scheme:dark){:root{--fg:#ececf1;--mut:#a1a1aa;--bg:#0f1014;--card:#17181d;--line:#2b2c33;--acc:#6aa8ff;--tag:#1d2533}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.65 system-ui,-apple-system,"Segoe UI",Tahoma,"Noto Sans Arabic","Noto Sans",sans-serif}
+main{max-width:980px;margin:0 auto;padding:24px 18px 80px}
+a{color:var(--acc)}
+.lang{margin:0 0 8px;font-size:15px}
+.lang a{display:inline-block;padding:4px 12px;border:1px solid var(--line);border-radius:999px;text-decoration:none;background:var(--card)}
+h1{font-size:30px;line-height:1.25;margin:8px 0 4px}
+.date{color:var(--mut);margin:0 0 16px}
+h2{font-size:24px;margin:48px 0 8px;padding-top:12px;border-top:2px solid var(--line)}
+h3{font-size:19px;margin:28px 0 10px;color:var(--mut)}
+.box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:16px 0}
+.box dl{margin:0}.box dt{font-weight:600;display:inline}.box dd{display:inline;margin:0}.box dd::after{content:"";display:block;margin-bottom:6px}
+nav ul{margin:6px 0;padding-inline-start:20px}
+article{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px 18px;margin:14px 0;scroll-margin-top:12px}
+article h4{font-size:19px;line-height:1.35;margin:0 0 10px}
+.id{display:inline-block;font:600 12px/1.6 ui-monospace,Consolas,monospace;color:var(--mut);background:var(--tag);border-radius:6px;padding:0 7px;margin-inline-end:8px;vertical-align:3px;text-decoration:none}
+.also{color:var(--mut);font-size:15px;margin:-4px 0 8px}
+article p{margin:6px 0}
+article p b{display:block;font-size:14px;letter-spacing:.01em;color:var(--mut);font-weight:600;margin-top:10px}
+.media{margin-top:12px}
+.media img,.media video{display:block;max-width:100%;height:auto;border:1px solid var(--line);border-radius:8px;margin:10px 0;background:#000}
+.media img{background:transparent}
+.none{color:var(--mut);font-style:italic}
+.ans{margin-top:10px}.ans label{font-weight:600;display:block;margin-bottom:4px}
+.ans textarea{width:100%;min-height:70px;font:inherit;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--fg);box-sizing:border-box}
+.bar{position:sticky;bottom:0;background:var(--bg);border-top:1px solid var(--line);padding:10px 0;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.bar button,.bar input{font:inherit;padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--fg)}
+.bar button{cursor:pointer}.bar .st{color:var(--mut)}
+</style>
+</head>
+<body>
+<div dir="rtl" lang="ar">
+<main>
+<p class="lang"><a href="product-questions.html" lang="en" hreflang="en">Read in English</a></p>
+<h1>بوريت: أسئلة لفريق المنتج</h1>
+<p class="date">31 أكتوبر 2026</p>
+<p>هذه هي الأسئلة المفتوحة من مراجعتنا للتصميم. لكل سؤال: ماذا يفعل التصميم الآن، وما المطلوب منكم أن تقرروه، وما نقترحه.</p>
+<p>إذا لم يصلنا رد، نبني اقتراحنا، ويمكن تغييره لاحقًا. وفي بعض البنود تجدون «إلى أن تردّوا نبني»: هناك نبني ما هو مكتوب حتى تقرروا.</p>
+<p>مع كل سؤال صورة وفيديو قصير للتصميم في هذا الموضع، والإطار الأحمر يحدد المكان.</p>
+<p>الأسئلة مقسمة حسب من يجيب عنها. وداخل كل قسم ترتيبها حسب ترتيب البناء: البيع والعملاء أولًا، ثم المخزون والمشتريات، ثم الإعداد، ثم ما يأتي لاحقًا. نرجو الرد على الأسئلة الأولى أولًا.</p>
+<p>الرمز الصغير بجانب كل عنوان (مثل <bdi>PQ-14</bdi>) للإشارة إليه عند الرد فقط.</p>
+<div class="box"><strong>كلمات نستخدمها</strong><dl>
+<dt>تشغيلة:</dt> <dd>كمية من صنف وصلت معًا، لها تاريخ صلاحية واحد وتكلفة واحدة وسعر واحد.</dd>
+<dt>ليس للبيع:</dt> <dd>بضاعة استُبعدت من البيع لكنها ما زالت في الصيدلية.</dd>
+<dt>إعدام:</dt> <dd>إتلاف بضاعة «ليس للبيع» وخصمها من المخزون.</dd>
+<dt>جرد:</dt> <dd>عدّ البضاعة على الرفوف ومقارنتها بما يتوقعه بوريت. و«الترحيل» يُغلق الجرد.</dd>
+<dt>آجل:</dt> <dd>بيع يدفعه العميل لاحقًا ويُسجَّل على حسابه، في حدود حد الائتمان.</dd>
+<dt>تحصيل:</dt> <dd>مبلغ يُستلم لاحقًا عن رصيد آجل أو طلب توصيل.</dd>
+<dt>الدرج:</dt> <dd>درج النقدية في جهاز البيع، يُسلَّم من وردية إلى وردية.</dd>
+<dt>تعاقد:</dt> <dd>اتفاق مع شركة أو شركة تأمين تتحمل جزءًا من مشتريات أعضائها.</dd>
+<dt>كشكول النواقص:</dt> <dd>قائمة الأصناف التي تحتاج الصيدلية إلى شرائها.</dd>
+<dt>B-Connect:</dt> <dd>النظام الذي تستخدمه الصيدليات الآن، وسيحل بوريت محله.</dd>
+<dt>الإصدار الأول، التجربة:</dt> <dd>الإصدار الأول هو ما تحصل عليه أول صيدليات تستخدم بوريت، والتجربة هي استخدامها له.</dd>
+</dl></div>
+<nav class="box"><strong>المحتويات</strong><ul>
+<li><a href="#moaz">معاذ (سير العمل والنطاق)</a> (29)</li>
+<li><a href="#mostafa">مصطفى (التصميم)</a> (20)</li>
+<li><a href="#pharmacist">الصيدلي</a> (5)</li>
+<li><a href="#accountant">المحاسب</a> (5)</li>
+<li><a href="#decided">قرارات اتخذها عمر (للعلم)</a></li>
+</ul></nav>
+<h2 id="moaz">معاذ (سير العمل والنطاق)</h2>
+<h3>البيع والمرتجعات والعملاء والدرج</h3>
+<article id="O-P1">
+<h4><a class="id" href="#O-P1" dir="ltr">O-P1</a>صلاحيات كل دور وأقصى خصم له</h4>
+<p><b>ماذا يفعل التصميم الآن</b>تبويب الصلاحيات في التصميم ليس نهائيًا. والإعداد الجاهز للكاشير فيه لا يسمح له بالبيع، وهذا يبدو خطأ.</p>
+<p><b>المطلوب منكم</b>ما المسموح لكل دور من البداية؟ وما أقصى خصم يمنحه كل دور؟</p>
+<p><b>اقتراحنا</b>نأخذ القيم المبدئية في التصميم: صاحب الحساب بلا حد، والمدير 100%، والصيدلي 10%، والكاشير 0%. ويستطيع الكاشير البيع من نقطة البيع واستخدام الدرج (نتبع هنا قائمة الصلاحيات في التصميم، لا الإعداد الجاهز للكاشير). ويستطيع صاحب الحساب تغيير أي شيء من ذلك لكل شخص.</p>
+<div class="media">
+<p class="none">لا توجد صورة: ليس في التصميم شاشة لهذا السؤال.</p>
+</div>
+<div class="ans"><label for="a-O-P1">إجابتك</label><textarea id="a-O-P1" data-id="O-P1" data-t="صلاحيات كل دور وأقصى خصم له" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="PQ-3">
+<h4><a class="id" href="#PQ-3" dir="ltr">PQ-3</a>ما الذي لا يُباع</h4>
+<p><b>ماذا يفعل التصميم الآن</b>يعرض التصميم شارة «موقوف البيع» على الصنف، ثم يسمح ببيعه.</p>
+<p><b>المطلوب منكم</b>ما الذي لا يُباع أبدًا: التشغيلات منتهية الصلاحية فقط، أم أيضًا القريبة من انتهاء الصلاحية والأصناف «موقوف البيع»؟ وهل يُسمح لأحد بتجاوز ذلك؟</p>
+<p><b>اقتراحنا</b>التشغيلة منتهية الصلاحية لا تُباع أبدًا، ولا يتجاوز ذلك أحد. والصنف «موقوف البيع» لا يُضاف إلى فاتورة جديدة، ويظهر على أنه غير قابل للبيع. وإن كان في فاتورة مفتوحة من قبل، يُنبّه إليه بوريت عند إتمام الفاتورة. والتشغيلة القريبة من انتهاء الصلاحية تُباع كالمعتاد مع التنبيه المعتاد.</p>
+<div class="media">
+<img src="PQ-3.png" width="900" alt="صورة PQ-3" loading="lazy">
+<video src="PQ-3.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-PQ-3">إجابتك</label><textarea id="a-PQ-3" data-id="PQ-3" data-t="ما الذي لا يُباع" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="PQ-4">
+<h4><a class="id" href="#PQ-4" dir="ltr">PQ-4</a>الأسعار الإضافية في كارت الصنف («الأسعار المتاحة»)</h4>
+<p class="also">يخص أيضًا كارت الصنف.</p>
+<p><b>ماذا يفعل التصميم الآن</b>في كارت الصنف قائمة «الأسعار المتاحة» فيها أسعار إضافية تُضاف من «إضافة سعر». وهذه الأسعار غير مرتبطة بتشغيلة.</p>
+<p><b>المطلوب منكم</b>ما فائدة هذه الأسعار؟ ومن يحق له اختيار أحدها عند البيع؟ وهل يجب أن يرتبط كل سعر بتشغيلة؟</p>
+<p><b>اقتراحنا</b>لا نضيفها في الإصدار الأول. في نقطة البيع تعرض قائمة الأسعار أسعار التشغيلات فقط، واختيار سعر منها يُسجَّل كاختيار لتشغيلة. والمرتجع يُرد دائمًا بالسعر الذي دفعه العميل فعلًا.</p>
+<div class="media">
+<img src="PQ-4.png" width="900" alt="صورة PQ-4" loading="lazy">
+<video src="PQ-4.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-PQ-4">إجابتك</label><textarea id="a-PQ-4" data-id="PQ-4" data-t="الأسعار الإضافية في كارت الصنف («الأسعار المتاحة»)" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="PQ-2">
+<h4><a class="id" href="#PQ-2" dir="ltr">PQ-2</a>تقريب النقدية لأقرب 25 أو 50 قرشًا</h4>
+<p><b>ماذا يفعل التصميم الآن</b>يعرض التصميم المبالغ كاملة حتى القرش.</p>
+<p><b>المطلوب منكم</b>هل يُقرَّب إجمالي الدفع النقدي لأقرب 25 أو 50 قرشًا («تقريب النقدية»)؟ إن كان الجواب نعم، فعلى المحاسب أن يحدد أين يُسجَّل فرق التقريب.</p>
+<p><b>اقتراحنا</b>لا تقريب. المبلغ بالقرش كما في التصميم.</p>
+<div class="media">
+<img src="PQ-2.png" width="900" alt="صورة PQ-2" loading="lazy">
+<video src="PQ-2.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-PQ-2">إجابتك</label><textarea id="a-PQ-2" data-id="PQ-2" data-t="تقريب النقدية لأقرب 25 أو 50 قرشًا" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="PQ-17">
+<h4><a class="id" href="#PQ-17" dir="ltr">PQ-17</a>الفواتير المفتوحة عند تسليم الدرج أو الخروج</h4>
+<p><b>ماذا يفعل التصميم الآن</b>إذا بقيت فواتير مفتوحة عند تسليم الدرج أو تسجيل الخروج أو إغلاق الصفحة، يحذفها التصميم دون أي تنبيه.</p>
+<p><b>المطلوب منكم</b>هل ينبّه بوريت، أم يحفظ الفواتير، أم يمنع الإجراء؟</p>
+<p><b>اقتراحنا</b>تبقى الفواتير المفتوحة محفوظة لمن أنشأها. ويظهر عند تسليم الدرج وعند الخروج تنبيه بقائمة بها. وحذف فاتورة فيها أصناف يطلب التأكيد أولًا.</p>
+<div class="media">
+<img src="PQ-17.png" width="900" alt="صورة PQ-17" loading="lazy">
+<video src="PQ-17.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-PQ-17">إجابتك</label><textarea id="a-PQ-17" data-id="PQ-17" data-t="الفواتير المفتوحة عند تسليم الدرج أو الخروج" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="PQ-16">
+<h4><a class="id" href="#PQ-16" dir="ltr">PQ-16</a>إعادة طباعة إيصال فاتورة تمت</h4>
+<p><b>ماذا يفعل التصميم الآن</b>صفحة «فواتير البيع» ليس فيها زر طباعة.</p>
+<p><b>المطلوب منكم</b>هل يُسمح بطباعة الإيصال مرة أخرى؟ ومن يحق له ذلك؟ وهل تُكتب على الإيصال كلمة «نسخة»؟</p>
+<p><b>اقتراحنا</b>نضيف «طباعة نسخة» في «فواتير البيع»، ويُطبع الإيصال وعليه «نسخة». ويحق ذلك لصاحب الحساب والمدير والصيدلي.</p>
+<div class="media">
+<img src="PQ-16.png" width="900" alt="صورة PQ-16" loading="lazy">
+<video src="PQ-16.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-PQ-16">إجابتك</label><textarea id="a-PQ-16" data-id="PQ-16" data-t="إعادة طباعة إيصال فاتورة تمت" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="PQ-19">
+<h4><a class="id" href="#PQ-19" dir="ltr">PQ-19</a>متى يتوقف البيع الآجل للعميل</h4>
+<p><b>ماذا يفعل التصميم الآن</b>يشير التصميم إلى أن هذه القاعدة لم تُحدَّد بعد.</p>
+<p><b>المطلوب منكم</b>هل يتوقف الآجل فقط عندما يصل العميل إلى حد الائتمان؟ أم أيضًا عندما يتأخر سداد دين أكثر من عدد معين من الأيام؟</p>
+<p><b>اقتراحنا</b>عند حد الائتمان فقط. ويمكن إضافة قاعدة للتأخير لاحقًا.</p>
+<div class="media">
+<img src="PQ-19.png" width="900" alt="صورة PQ-19" loading="lazy">
+<video src="PQ-19.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-PQ-19">إجابتك</label><textarea id="a-PQ-19" data-id="PQ-19" data-t="متى يتوقف البيع الآجل للعميل" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="PQ-29">
+<h4><a class="id" href="#PQ-29" dir="ltr">PQ-29</a>عرض الرصيد المتاح للآجل في نقطة البيع</h4>
+<p><b>ماذا يفعل التصميم الآن</b>لا يرفض التصميم البيع الآجل إلا في النهاية، عند إتمام الفاتورة.</p>
+<p><b>المطلوب منكم</b>عندما يختار الكاشير الدفع آجل، هل يعرض بوريت الرصيد المتبقي للعميل قبل إتمام الفاتورة؟</p>
+<p><b>اقتراحنا</b>نعم. نعرض الرصيد المتبقي، وهل على العميل دين متأخر، في خانة الدفع الآجل.</p>
+<div class="media">
+<img src="PQ-29.png" width="900" alt="صورة PQ-29" loading="lazy">
+<video src="PQ-29.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-PQ-29">إجابتك</label><textarea id="a-PQ-29" data-id="PQ-29" data-t="عرض الرصيد المتاح للآجل في نقطة البيع" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="PQ-22">
+<h4><a class="id" href="#PQ-22" dir="ltr">PQ-22</a>رد المبلغ رصيدًا للعميل («رصيد للعميل»)</h4>
+<p><b>ماذا يفعل التصميم الآن</b>شاشات المرتجع في التصميم لا تتيح رد المبلغ رصيدًا للعميل.</p>
+<p><b>المطلوب منكم</b>عند مرتجع بيع نقدي أو بالبطاقة أو توصيل، هل يمكن أن يُرد المبلغ رصيدًا للعميل يشتري به لاحقًا؟</p>
+<p><b>اقتراحنا</b>لا رصيد للعميل في الإصدار الأول. يُرد المبلغ نقدًا أو بنفس طريقة الدفع. وعند مرتجع فاتورة آجل، يُخصم المرتجع أولًا مما على العميل (انظر <bdi>D4</bdi>).</p>
+<div class="media">
+<img src="PQ-22.png" width="900" alt="صورة PQ-22" loading="lazy">
+<video src="PQ-22.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-PQ-22">إجابتك</label><textarea id="a-PQ-22" data-id="PQ-22" data-t="رد المبلغ رصيدًا للعميل («رصيد للعميل»)" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="PQ-23">
+<h4><a class="id" href="#PQ-23" dir="ltr">PQ-23</a>النقاط عند المرتجع</h4>
+<p><b>ماذا يفعل التصميم الآن</b>في التصميم لا يغيّر المرتجع نقاط العميل. وقرر عمر أن يسترد بوريت النقاط التي كسبها العميل على الأصناف المرتجعة.</p>
+<p><b>المطلوب منكم</b>نرجو تأكيد هذه القاعدة.</p>
+<p><b>اقتراحنا</b>تُسترد النقاط المكتسبة بنسبة ما أُرجع، مع التقريب لأسفل.</p>
+<div class="media">
+<img src="PQ-23.png" width="900" alt="صورة PQ-23" loading="lazy">
+<video src="PQ-23.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-PQ-23">إجابتك</label><textarea id="a-PQ-23" data-id="PQ-23" data-t="النقاط عند المرتجع" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="PQ-25">
+<h4><a class="id" href="#PQ-25" dir="ltr">PQ-25</a>النقاط في البيع الآجل</h4>
+<p><b>ماذا يفعل التصميم الآن</b>في التصميم يكسب البيع الآجل نقاطًا ويسمح باستخدام النقاط فورًا.</p>
+<p><b>المطلوب منكم</b>هل يكسب البيع الآجل نقاطًا أو يستخدمها؟</p>
+<p><b>اقتراحنا</b>لا. لا يكسب البيع الآجل نقاطًا ولا يستخدمها حتى تقرروا غير ذلك (اختيار عمر).</p>
+<div class="media">
+<img src="PQ-25.png" width="900" alt="صورة PQ-25" loading="lazy">
+<video src="PQ-25.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-PQ-25">إجابتك</label><textarea id="a-PQ-25" data-id="PQ-25" data-t="النقاط في البيع الآجل" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="PQ-24">
+<h4><a class="id" href="#PQ-24" dir="ltr">PQ-24</a>تغيير مدة انتهاء صلاحية النقاط</h4>
+<p><b>ماذا يفعل التصميم الآن</b>في قواعد النقاط إعداد «النقاط تنتهي بعد N يوم».</p>
+<p><b>المطلوب منكم</b>إذا تغيّر هذا الرقم، هل يؤثر في النقاط التي كسبها العملاء من قبل؟</p>
+<p><b>اقتراحنا</b>لا. يُطبَّق الرقم الجديد على النقاط المكتسبة بعد التغيير فقط.</p>
+<div class="media">
+<img src="PQ-24.png" width="900" alt="صورة PQ-24" loading="lazy">
+<video src="PQ-24.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-PQ-24">إجابتك</label><textarea id="a-PQ-24" data-id="PQ-24" data-t="تغيير مدة انتهاء صلاحية النقاط" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="PQ-26">
+<h4><a class="id" href="#PQ-26" dir="ltr">PQ-26</a>ترتيب الخصومات مع التعاقد</h4>
+<p><b>ماذا يفعل التصميم الآن</b>عند وجود تعاقد على الفاتورة، يطبّق التصميم الخصومات بهذا الترتيب: خصم كل بند أولًا، ثم خصم التعاقد، ثم خصم الفاتورة وخصم النقاط.</p>
+<p><b>المطلوب منكم</b>هل هذا الترتيب صحيح؟</p>
+<p><b>اقتراحنا</b>نُبقي ترتيب التصميم.</p>
+<div class="media">
+<img src="PQ-26.png" width="900" alt="صورة PQ-26" loading="lazy">
+<video src="PQ-26.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-PQ-26">إجابتك</label><textarea id="a-PQ-26" data-id="PQ-26" data-t="ترتيب الخصومات مع التعاقد" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="PQ-27">
+<h4><a class="id" href="#PQ-27" dir="ltr">PQ-27</a>اختيار التعاقد من العميل</h4>
+<p><b>ماذا يفعل التصميم الآن</b>في شاشة التعاقد مكتوب أن تعاقد العميل يُطبَّق تلقائيًا عند اختياره. لكن في نقطة البيع يختار الكاشير التعاقد بنفسه. والاثنان لا يتفقان.</p>
+<p><b>المطلوب منكم</b>أيهما الصحيح؟</p>
+<p><b>اقتراحنا</b>يختار الكاشير التعاقد بنفسه، وتظهر تعاقدات العميل المرتبطة به أولًا في القائمة.</p>
+<div class="media">
+<img src="PQ-27.png" width="900" alt="صورة PQ-27" loading="lazy">
+<video src="PQ-27.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-PQ-27">إجابتك</label><textarea id="a-PQ-27" data-id="PQ-27" data-t="اختيار التعاقد من العميل" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="PQ-30">
+<h4><a class="id" href="#PQ-30" dir="ltr">PQ-30</a>إيصال التحصيل</h4>
+<p><b>ماذا يفعل التصميم الآن</b>التحصيل مبلغ يدفعه العميل مما عليه من آجل، ويتم من شاشة «تحصيل من …» في «الحسابات الآجلة».</p>
+<p><b>المطلوب منكم</b>هل يُطبع إيصال عند التحصيل؟</p>
+<p><b>اقتراحنا</b>نعم، وله رقم إيصال خاص به.</p>
+<div class="media">
+<img src="PQ-30.png" width="900" alt="صورة PQ-30" loading="lazy">
+<video src="PQ-30.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-PQ-30">إجابتك</label><textarea id="a-PQ-30" data-id="PQ-30" data-t="إيصال التحصيل" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<h3>المخزون والجرد والمشتريات</h3>
+<article id="PQ-9">
+<h4><a class="id" href="#PQ-9" dir="ltr">PQ-9</a>ترحيل الجرد</h4>
+<p><b>ماذا يفعل التصميم الآن</b>في التصميم يكتفي «ترحيل الجرد» بتعليم الجرد بأنه مُرحَّل، ولا يتغير المخزون.</p>
+<p><b>المطلوب منكم</b>هل يجب أن يعدّل الترحيل المخزون ليطابق ما تم عدّه؟ وإن كان كذلك، فعند «عجز الجرد» أو «زيادة الجرد»، من أي تاريخ صلاحية تُخصم الكمية أو إليه تُضاف؟</p>
+<p><b>إلى أن تردّوا نبني</b>ترك عمر هذا السؤال مفتوحًا، فلا يوجد افتراض بعد. يكتفي الترحيل بتعليم الجرد بأنه مُرحَّل، كما في التصميم.</p>
+<p><b>اقتراحنا</b>يعدّل الترحيل المخزون. يُخصم العجز من أقرب تاريخ صلاحية أولًا، وتُضاف الزيادة إلى أبعد تاريخ صلاحية في نفس المخزن.</p>
+<div class="media">
+<img src="PQ-9.png" width="900" alt="صورة PQ-9" loading="lazy">
+<video src="PQ-9.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-PQ-9">إجابتك</label><textarea id="a-PQ-9" data-id="PQ-9" data-t="ترحيل الجرد" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="PQ-7">
+<h4><a class="id" href="#PQ-7" dir="ltr">PQ-7</a>الجرد يجد تاريخ صلاحية بلا تشغيلة</h4>
+<p><b>ماذا يفعل التصميم الآن</b>أثناء الجرد يمكن إضافة تاريخ صلاحية غير موجود في بوريت («إضافة تاريخ صلاحية»). ولا يوضح التصميم ماذا يحدث له عند ترحيل الجرد.</p>
+<p><b>المطلوب منكم</b>هل ينشئ الترحيل تشغيلة جديدة له؟ وبأي تكلفة؟ ومن يوافق عليها؟</p>
+<p><b>إلى أن تردّوا نبني</b>ترك عمر هذا السؤال مفتوحًا، فلا يوجد افتراض بعد. يُحفظ السطر ولا يتغير المخزون.</p>
+<p><b>اقتراحنا</b>تُنشأ تشغيلة جديدة عليها «من الجرد» بتكلفة آخر شراء، ولا يفعل ذلك إلا المدير.</p>
+<div class="media">
+<img src="PQ-7.png" width="900" alt="صورة PQ-7" loading="lazy">
+<video src="PQ-7.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-PQ-7">إجابتك</label><textarea id="a-PQ-7" data-id="PQ-7" data-t="الجرد يجد تاريخ صلاحية بلا تشغيلة" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="PQ-15">
+<h4><a class="id" href="#PQ-15" dir="ltr">PQ-15</a>بعد الإعدام: تنبيه أم موافقة؟</h4>
+<p><b>ماذا يفعل التصميم الآن</b>بعد الإعدام تظهر في التصميم رسالة «تم إبلاغ المدير»، لكن لا يُرسل شيء. ويعرض جرس التنبيهات مثالًا «إعدام بانتظار الموافقة».</p>
+<p><b>المطلوب منكم</b>هل يجب أن يُبلَّغ أحد بالإعدام، صاحب الحساب مثلًا؟ أم ينتظر الإعدام موافقة قبل تنفيذه؟</p>
+<p><b>اقتراحنا</b>يُنفَّذ فورًا دون تنبيه ودون موافقة، كما في التصميم.</p>
+<div class="media">
+<img src="PQ-15.png" width="900" alt="صورة PQ-15" loading="lazy">
+<video src="PQ-15.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-PQ-15">إجابتك</label><textarea id="a-PQ-15" data-id="PQ-15" data-t="بعد الإعدام: تنبيه أم موافقة؟" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="PQ-14">
+<h4><a class="id" href="#PQ-14" dir="ltr">PQ-14</a>تبويب «إعدام» في صفحة «ليس للبيع»</h4>
+<p><b>ماذا يفعل التصميم الآن</b>في صفحة «ليس للبيع» تبويب «إعدام»، ولا توجد خطوة في التصميم تضع فيه شيئًا.</p>
+<p><b>المطلوب منكم</b>ما الذي يظهر في هذا التبويب؟</p>
+<p><b>اقتراحنا</b>نتبع البيانات التجريبية في التصميم: الأصناف المستبعدة من البيع بسبب «منتهي الصلاحية» أو «صنف ممنوع تداوله» تظهر في «إعدام».</p>
+<div class="media">
+<img src="PQ-14.png" width="900" alt="صورة PQ-14" loading="lazy">
+<video src="PQ-14.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-PQ-14">إجابتك</label><textarea id="a-PQ-14" data-id="PQ-14" data-t="تبويب «إعدام» في صفحة «ليس للبيع»" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="PQ-12">
+<h4><a class="id" href="#PQ-12" dir="ltr">PQ-12</a>حذف صنف</h4>
+<p><b>ماذا يفعل التصميم الآن</b>بعد حذف صنف يعرض التصميم زر «تراجع» لمدة 5 ثوانٍ، ثم يختفي الصنف.</p>
+<p><b>المطلوب منكم</b>هل تكفي 5 ثوانٍ؟ أم يجب أن تبقى الأصناف المحذوفة ظاهرة ويمكن استرجاعها لاحقًا؟ ومن يحق له حذف الأصناف؟</p>
+<p><b>اقتراحنا</b>زر «تراجع» لمدة 5 ثوانٍ فقط، دون صفحة لاسترجاع المحذوف. ولا يحذف إلا من لديه صلاحية «حذف صنف» (انظر <bdi>D2</bdi>).</p>
+<div class="media">
+<img src="PQ-12.png" width="900" alt="صورة PQ-12" loading="lazy">
+<video src="PQ-12.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-PQ-12">إجابتك</label><textarea id="a-PQ-12" data-id="PQ-12" data-t="حذف صنف" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="PQ-13">
+<h4><a class="id" href="#PQ-13" dir="ltr">PQ-13</a>تشغيلتان بنفس تاريخ الصلاحية</h4>
+<p><b>ماذا يفعل التصميم الآن</b>قد يكون للصنف تشغيلتان بنفس تاريخ الصلاحية وبسعر أو تكلفة مختلفة. وتعرض الصورة مكان قائمة التشغيلات في كارت الصنف («تواريخ الصلاحية»).</p>
+<p><b>المطلوب منكم</b>هل تظهران في صفّين منفصلين؟</p>
+<p><b>اقتراحنا</b>صف لكل تشغيلة في صفحة المخزون، كما في التصميم. أما الجرد والاستبعاد من البيع فيجمعان التشغيلات حسب تاريخ الصلاحية.</p>
+<div class="media">
+<img src="PQ-13.png" width="900" alt="صورة PQ-13" loading="lazy">
+<video src="PQ-13.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-PQ-13">إجابتك</label><textarea id="a-PQ-13" data-id="PQ-13" data-t="تشغيلتان بنفس تاريخ الصلاحية" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="PQ-37">
+<h4><a class="id" href="#PQ-37" dir="ltr">PQ-37</a>إلغاء فاتورة شراء معتمدة</h4>
+<p><b>ماذا يفعل التصميم الآن</b>في التصميم تُفتح فاتورة الشراء المعتمدة للعرض فقط («معتمدة — للعرض فقط»)، ولا يمكن تعديلها أو إلغاؤها.</p>
+<p><b>المطلوب منكم</b>هل تحتاجون طريقة لإلغاء فاتورة شراء بعد اعتمادها؟</p>
+<p><b>اقتراحنا</b>لا. تُصحَّح الأخطاء بمرتجع للمورد.</p>
+<div class="media">
+<img src="PQ-37.png" width="900" alt="صورة PQ-37" loading="lazy">
+<video src="PQ-37.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-PQ-37">إجابتك</label><textarea id="a-PQ-37" data-id="PQ-37" data-t="إلغاء فاتورة شراء معتمدة" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="PQ-39">
+<h4><a class="id" href="#PQ-39" dir="ltr">PQ-39</a>طلبية مُرسلة لم تصل</h4>
+<p><b>ماذا يفعل التصميم الآن</b>بعد طلب صنف من مورد، يختفي من «كشكول النواقص» ومن المقترحات حتى تصل فاتورة الشراء. وإن لم تصل الطلبية، يبقى الصنف مختفيًا إلى الأبد. ولا يتيح التصميم إلغاء طلبية مُرسلة.</p>
+<p><b>المطلوب منكم</b>هل يمكن إلغاء الطلبية المُرسلة؟ أم تنتهي بعد مدة، أم يُذكَّر بها أحد؟</p>
+<p><b>إلى أن تردّوا نبني</b>كما في التصميم.</p>
+<p><b>اقتراحنا</b>يمكن إلغاء كل سطر في الطلبية المُرسلة بسبب «لم يتوفر لدى المورد»، فيعود الصنف إلى «كشكول النواقص».</p>
+<div class="media">
+<img src="PQ-39.png" width="900" alt="صورة PQ-39" loading="lazy">
+<video src="PQ-39.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-PQ-39">إجابتك</label><textarea id="a-PQ-39" data-id="PQ-39" data-t="طلبية مُرسلة لم تصل" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="PQ-40">
+<h4><a class="id" href="#PQ-40" dir="ltr">PQ-40</a>فاتورة مورد مكررة</h4>
+<p><b>ماذا يفعل التصميم الآن</b>لا يتحقق التصميم من ذلك. يمكن إدخال فاتورة برقم سبق استخدامه لنفس المورد دون أي تنبيه.</p>
+<p><b>المطلوب منكم</b>إذا أُدخل نفس المورد ونفس رقم الفاتورة مرة أخرى، هل ينبّه بوريت أم يمنع؟</p>
+<p><b>إلى أن تردّوا نبني</b>كما في التصميم (بلا تحقق).</p>
+<p><b>اقتراحنا</b>تنبيه عندما يتطابق المورد ورقم الفاتورة مع فاتورة سابقة.</p>
+<div class="media">
+<img src="PQ-40.png" width="900" alt="صورة PQ-40" loading="lazy">
+<video src="PQ-40.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-PQ-40">إجابتك</label><textarea id="a-PQ-40" data-id="PQ-40" data-t="فاتورة مورد مكررة" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="PQ-41">
+<h4><a class="id" href="#PQ-41" dir="ltr">PQ-41</a>مسودات فواتير الشراء: مشتركة أم خاصة</h4>
+<p><b>ماذا يفعل التصميم الآن</b>يعرض التصميم مسودات الجميع معًا («مسودات بانتظار المراجعة»). ولا يظهر على المسودة اسم من أنشأها، ويمكن لشخصين فتحها في نفس الوقت.</p>
+<p><b>المطلوب منكم</b>هل تكون المسودات مشتركة بين الجميع، أم تخص من أنشأها؟</p>
+<p><b>اقتراحنا</b>مشتركة كما في التصميم، وتُحفظ تلقائيًا.</p>
+<div class="media">
+<img src="PQ-41.png" width="900" alt="صورة PQ-41" loading="lazy">
+<video src="PQ-41.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-PQ-41">إجابتك</label><textarea id="a-PQ-41" data-id="PQ-41" data-t="مسودات فواتير الشراء: مشتركة أم خاصة" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="PQ-42">
+<h4><a class="id" href="#PQ-42" dir="ltr">PQ-42</a>حد الطلبية للمورد</h4>
+<p><b>ماذا يفعل التصميم الآن</b>تحفظ صفحة المورد «حد الطلبية» وتعرضه، لكن لا شيء يستخدمه.</p>
+<p><b>المطلوب منكم</b>هل يجب أن يكون له أثر؟ مثلًا تنبيه عندما تقل الطلبية عنه.</p>
+<p><b>اقتراحنا</b>يُحفظ ويُعرض فقط.</p>
+<div class="media">
+<img src="PQ-42.png" width="900" alt="صورة PQ-42" loading="lazy">
+<video src="PQ-42.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-PQ-42">إجابتك</label><textarea id="a-PQ-42" data-id="PQ-42" data-t="حد الطلبية للمورد" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="PQ-43">
+<h4><a class="id" href="#PQ-43" dir="ltr">PQ-43</a>من أين يأتي «أعلى خصم»؟</h4>
+<p><b>ماذا يفعل التصميم الآن</b>في «كشكول النواقص» عمود «أعلى خصم»، وهو يعرض الآن بيانات تجريبية فقط.</p>
+<p><b>المطلوب منكم</b>من أين يأتي الرقم: من آخر سطر في فاتورة شراء، أم من قائمة عروض المورد؟ أم نحذف العمود؟</p>
+<p><b>إلى أن تردّوا نبني</b>لم يُبنَ بعد.</p>
+<p><b>اقتراحنا</b>نأخذه من آخر سطر في فاتورة شراء معتمدة لنفس المورد والصنف، ونخفيه إن لم يوجد.</p>
+<div class="media">
+<img src="PQ-43.png" width="900" alt="صورة PQ-43" loading="lazy">
+<video src="PQ-43.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-PQ-43">إجابتك</label><textarea id="a-PQ-43" data-id="PQ-43" data-t="من أين يأتي «أعلى خصم»؟" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<h3>الإعداد والنقل من B-Connect</h3>
+<article id="PQ-31">
+<h4><a class="id" href="#PQ-31" dir="ltr">PQ-31</a>نقل العملاء وأرصدتهم من B-Connect</h4>
+<p><b>ماذا يفعل التصميم الآن</b>في التصميم يتم نقل الصيدلية من B-Connect في ست خطوات تنتهي عند «المخزون المنقول»، ولا تشمل أيٌّ منها العملاء أو أرصدتهم.</p>
+<p><b>المطلوب منكم</b>كيف تبدو خطوة مراجعة العملاء المنقولين؟</p>
+<p><b>اقتراحنا</b>ننقل العملاء وشروط الآجل لكل منهم ورصيدًا افتتاحيًا واحدًا لكل عميل بتاريخ يوم النقل، وتعرضهم خطوة مراجعة. ونبني هذه الخطوة من عناصر التصميم الموجودة.</p>
+<div class="media">
+<img src="PQ-31.png" width="900" alt="صورة PQ-31" loading="lazy">
+<video src="PQ-31.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-PQ-31">إجابتك</label><textarea id="a-PQ-31" data-id="PQ-31" data-t="نقل العملاء وأرصدتهم من B-Connect" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<h3>لاحقًا</h3>
+<article id="PQ-1">
+<h4><a class="id" href="#PQ-1" dir="ltr">PQ-1</a>الدخول: اسم المستخدم وكلمة المرور من B-Connect، أم الاسم ورقم سري</h4>
+<p><b>ماذا يفعل التصميم الآن</b>شاشة الدخول في التصميم مؤقتة («شاشة الدخول لم تُصمَّم بعد»). ويبدأ الإصدار الأول بأسماء المستخدمين وكلمات المرور الموجودة في B-Connect.</p>
+<p><b>المطلوب منكم</b>هل نُبقي ذلك على المدى الطويل؟ أم ننتقل إلى اختيار الاسم وكتابة رقم سري قصير على أجهزة البيع المشتركة؟</p>
+<p><b>اقتراحنا</b>الإصدار الأول كما سبق. والصيدلية الجديدة (التي لا تنتقل من B-Connect) تنشئ كلمات المرور عند أول دخول. ويمكن إضافة الاسم والرقم السري بعد التجربة إن أردتم.</p>
+<div class="media">
+<img src="PQ-1.png" width="900" alt="صورة PQ-1" loading="lazy">
+<video src="PQ-1.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-PQ-1">إجابتك</label><textarea id="a-PQ-1" data-id="PQ-1" data-t="الدخول: اسم المستخدم وكلمة المرور من B-Connect، أم الاسم ورقم سري" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<h2 id="mostafa">مصطفى (التصميم)</h2>
+<p>أغلب البنود هنا مواضع سيعمل فيها بوريت بشكل مختلف عن التصميم عن قصد، وقد قرر عمر كلًّا منها في 30 أكتوبر 2026. «التصميم» هو ما تفعله الشاشات الآن، و«بوريت» هو ما سنبنيه. مصطفى: نرجو التأكد أن الشاشات ما زالت مناسبة. وكثير منها قواعد تخص المخزون أو المال، لذلك نرجو من معاذ تأكيدها أيضًا. وفيها سؤالان مفتوحان: <bdi>PQ-32</bdi> وPQ-46.</p>
+<h3>البيع والمرتجعات والعملاء والدرج</h3>
+<article id="PQ-32">
+<h4><a class="id" href="#PQ-32" dir="ltr">PQ-32</a>كلمتا «العملاء المدينين» و«مدينين»</h4>
+<p><b>ماذا يفعل التصميم الآن</b>تستخدم صفحة «الحسابات الآجلة» «العملاء المدينين» و«مدينين». وقاعدة اللغة في التصميم نفسه تحصر كلمة «مدين» في صفحات المحاسبة فقط (دفتر اليومية وميزان المراجعة).</p>
+<p><b>المطلوب منكم</b>هل نُبقي هذه العناوين أم نعيد صياغتها؟</p>
+<p><b>اقتراحنا</b>تبقى كما في التصميم.</p>
+<div class="media">
+<img src="PQ-32.png" width="900" alt="صورة PQ-32" loading="lazy">
+<video src="PQ-32.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-PQ-32">إجابتك</label><textarea id="a-PQ-32" data-id="PQ-32" data-t="كلمتا «العملاء المدينين» و«مدينين»" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="D3">
+<h4><a class="id" href="#D3" dir="ltr">D3</a>تعديل طلب التوصيل</h4>
+<p><b>التصميم</b>تُعدَّل بنود طلب التوصيل المسجَّل في مكانها.</p>
+<p><b>ما سيفعله بوريت</b>نفس الشاشات، لكن كل تعديل يُسجَّل كحركة جديدة: تصحيح للمخزون ونسخة جديدة من الإيصال. ويصبح البيع نهائيًا عند «تحصيل»، أي عند استلام المبلغ.</p>
+<div class="media">
+<img src="D3.png" width="900" alt="صورة D3" loading="lazy">
+<video src="D3.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-D3">إجابتك</label><textarea id="a-D3" data-id="D3" data-t="تعديل طلب التوصيل" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="D4">
+<h4><a class="id" href="#D4" dir="ltr">D4</a>مرتجع فاتورة آجل</h4>
+<p><b>التصميم</b>يعرض دائمًا رد المبلغ «نقدي»، حتى لو لم يدفع العميل بعد.</p>
+<p><b>ما سيفعله بوريت</b>يُخصم المرتجع أولًا مما على العميل، ولا يُرد نقدًا إلا الجزء الذي دفعه.</p>
+<div class="media">
+<img src="D4.png" width="900" alt="صورة D4" loading="lazy">
+<video src="D4.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-D4">إجابتك</label><textarea id="a-D4" data-id="D4" data-t="مرتجع فاتورة آجل" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="D5">
+<h4><a class="id" href="#D5" dir="ltr">D5</a>حدود الخصم</h4>
+<p><b>التصميم</b>حدود ثابتة: 20% للبند و10% للفاتورة، وتنطبق على الجميع حتى صاحب الحساب.</p>
+<p><b>ما سيفعله بوريت</b>يمكن لصاحب الحساب تجاوزها، وتنطبق على كل من عداه.</p>
+<div class="media">
+<img src="D5.png" width="900" alt="صورة D5" loading="lazy">
+<video src="D5.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-D5">إجابتك</label><textarea id="a-D5" data-id="D5" data-t="حدود الخصم" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="D6">
+<h4><a class="id" href="#D6" dir="ltr">D6</a>مدة الاسترجاع</h4>
+<p><b>التصميم</b>تُطبع «مدة الاسترجاع» على الإيصال، لكن لا يتم التحقق منها، ويستطيع أي شخص تغييرها من صفحة المرتجع.</p>
+<p><b>ما سيفعله بوريت</b>تُطبَّق المدة فعلًا. والمرتجع بعد انتهائها يحتاج صلاحية خاصة ويُسجَّل. وتُنقل الخانة من صفحة المرتجع.</p>
+<div class="media">
+<img src="D6.png" width="900" alt="صورة D6" loading="lazy">
+<video src="D6.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-D6">إجابتك</label><textarea id="a-D6" data-id="D6" data-t="مدة الاسترجاع" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="D7">
+<h4><a class="id" href="#D7" dir="ltr">D7</a>الأصناف الجدول</h4>
+<p><b>التصميم</b>عند بيع صنف جدول لا تُحفظ علامات الاختيار الثلاث، ولا يتم التحقق من صلاحية «بيع صنف جدول».</p>
+<p><b>ما سيفعله بوريت</b>تُحفظ العلامات الثلاث مع الفاتورة، ويتم التحقق من الصلاحية.</p>
+<div class="media">
+<img src="D7.png" width="900" alt="صورة D7" loading="lazy">
+<video src="D7.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-D7">إجابتك</label><textarea id="a-D7" data-id="D7" data-t="الأصناف الجدول" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="D8">
+<h4><a class="id" href="#D8" dir="ltr">D8</a>قائمة الكاشير</h4>
+<p><b>التصميم</b>يرى الكاشير كل صفحات «البيع».</p>
+<p><b>ما سيفعله بوريت</b>تعرض القائمة ما يُسمح للكاشير باستخدامه فقط. وما لا يستطيع الدور استخدامه يُخفى ولا يظهر معطَّلًا.</p>
+<div class="media">
+<img src="D8.png" width="900" alt="صورة D8" loading="lazy">
+<video src="D8.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-D8">إجابتك</label><textarea id="a-D8" data-id="D8" data-t="قائمة الكاشير" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="D9">
+<h4><a class="id" href="#D9" dir="ltr">D9</a>حذف عميل</h4>
+<p><b>التصميم</b>زر «حذف» يحذف العميل دون التحقق مما عليه من دين.</p>
+<p><b>ما سيفعله بوريت</b>نفس الشاشة، لكن العميل يُؤرشَف وتبقى معاملاته وحسابه. ويرفض بوريت ذلك ما دام عليه دين.</p>
+<div class="media">
+<img src="D9.png" width="900" alt="صورة D9" loading="lazy">
+<video src="D9.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-D9">إجابتك</label><textarea id="a-D9" data-id="D9" data-t="حذف عميل" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="D10">
+<h4><a class="id" href="#D10" dir="ltr">D10</a>صلاحيات العملاء</h4>
+<p><b>التصميم</b>يستطيع كل دور تعديل العملاء وحدود الائتمان وقواعد النقاط والتعاقدات.</p>
+<p><b>ما سيفعله بوريت</b>لكل منها صلاحية خاصة. وتبقى الإضافة السريعة لعميل من نقطة البيع متاحة للجميع.</p>
+<div class="media">
+<img src="D10.png" width="900" alt="صورة D10" loading="lazy">
+<video src="D10.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-D10">إجابتك</label><textarea id="a-D10" data-id="D10" data-t="صلاحيات العملاء" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="D11">
+<h4><a class="id" href="#D11" dir="ltr">D11</a>التحصيل والدرج</h4>
+<p><b>التصميم</b>المبلغ النقدي من «تحصيل» لا يُحسب ضمن النقدية المتوقعة في الدرج.</p>
+<p><b>ما سيفعله بوريت</b>يُحسب، حتى لا يظهر التحصيل كزيادة في الدرج.</p>
+<div class="media">
+<img src="D11.png" width="900" alt="صورة D11" loading="lazy">
+<video src="D11.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-D11">إجابتك</label><textarea id="a-D11" data-id="D11" data-t="التحصيل والدرج" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="D12">
+<h4><a class="id" href="#D12" dir="ltr">D12</a>خصم أكبر من الإجمالي</h4>
+<p><b>التصميم</b>إذا زادت الخصومات عن إجمالي الفاتورة، يعرض التصميم الإجمالي 0.</p>
+<p><b>ما سيفعله بوريت</b>يرفض بوريت الفاتورة.</p>
+<div class="media">
+<img src="D12.png" width="900" alt="صورة D12" loading="lazy">
+<video src="D12.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-D12">إجابتك</label><textarea id="a-D12" data-id="D12" data-t="خصم أكبر من الإجمالي" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="D13">
+<h4><a class="id" href="#D13" dir="ltr">D13</a>النقاط في البيع الآجل</h4>
+<p><b>التصميم</b>تُكتسب النقاط وتُستخدم فورًا.</p>
+<p><b>ما سيفعله بوريت</b>لا نقاط حتى يُجاب عن <bdi>PQ-25</bdi>.</p>
+<div class="media">
+<img src="D13.png" width="900" alt="صورة D13" loading="lazy">
+<video src="D13.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-D13">إجابتك</label><textarea id="a-D13" data-id="D13" data-t="النقاط في البيع الآجل" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="D14">
+<h4><a class="id" href="#D14" dir="ltr">D14</a>النقاط عند المرتجع</h4>
+<p><b>التصميم</b>لا تتغير النقاط.</p>
+<p><b>ما سيفعله بوريت</b>تُسترد النقاط التي كُسبت على الأصناف المرتجعة (انظر <bdi>PQ-23</bdi>).</p>
+<div class="media">
+<img src="D14.png" width="900" alt="صورة D14" loading="lazy">
+<video src="D14.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-D14">إجابتك</label><textarea id="a-D14" data-id="D14" data-t="النقاط عند المرتجع" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<h3>المخزون والجرد والمشتريات</h3>
+<article id="PQ-44">
+<h4><a class="id" href="#PQ-44" dir="ltr">PQ-44</a>بطاقة «طلبية مفتوحة — لم تُرسل بعد»</h4>
+<p><b>ماذا يفعل التصميم الآن</b>في «كشكول النواقص» لا تمتلئ هذه البطاقة إلا بالضغط على Ctrl+Enter. وعندما تكون فارغة، يشير نصها إلى زر غير موجود.</p>
+<p><b>المطلوب منكم</b>هل نُبقي البطاقة أم نحذفها؟</p>
+<p><b>إلى أن تردّوا نبني</b>تبقى كما في التصميم.</p>
+<p><b>اقتراحنا</b>نحذفها ونُبقي طريقة واحدة للطلب: «طلب من مورد».</p>
+<div class="media">
+<img src="PQ-44.png" width="900" alt="صورة PQ-44" loading="lazy">
+<video src="PQ-44.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-PQ-44">إجابتك</label><textarea id="a-PQ-44" data-id="PQ-44" data-t="بطاقة «طلبية مفتوحة — لم تُرسل بعد»" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="PQ-46">
+<h4><a class="id" href="#PQ-46" dir="ltr">PQ-46</a>قراءة صورة الفاتورة: الانتظار والفشل</h4>
+<p><b>ماذا يفعل التصميم الآن</b>عند رفع صورة فاتورة مورد، يفتح التصميم مسودة ممتلئة فورًا. ولا يعرض شيئًا أثناء قراءة الفاتورة، ولا شيئًا إذا فشلت القراءة. (اختار عمر بالفعل الخدمة التي تقرأ الفواتير.)</p>
+<p><b>المطلوب منكم</b>ماذا يرى الموظف أثناء قراءة الفاتورة؟ وماذا يرى إذا فشلت القراءة؟</p>
+<p><b>إلى أن تردّوا نبني</b>لم يُرسم شيء بعد.</p>
+<p><b>اقتراحنا</b>شاشة انتظار بسيطة تقول إن الفاتورة تُقرأ. وإذا فشلت القراءة، تُفتح مسودة فارغة للإدخال اليدوي مع رسالة قصيرة.</p>
+<div class="media">
+<img src="PQ-46.png" width="900" alt="صورة PQ-46" loading="lazy">
+<video src="PQ-46.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-PQ-46">إجابتك</label><textarea id="a-PQ-46" data-id="PQ-46" data-t="قراءة صورة الفاتورة: الانتظار والفشل" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="D1">
+<h4><a class="id" href="#D1" dir="ltr">D1</a>صلاحية الإعدام</h4>
+<p><b>التصميم</b>يستطيع دور المدير الإعدام مباشرة.</p>
+<p><b>ما سيفعله بوريت</b>الإعدام صلاحية مستقلة، تُعطى افتراضيًا للمدير وصاحب الحساب.</p>
+<div class="media">
+<img src="D1.png" width="900" alt="صورة D1" loading="lazy">
+<video src="D1.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-D1">إجابتك</label><textarea id="a-D1" data-id="D1" data-t="صلاحية الإعدام" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="D2">
+<h4><a class="id" href="#D2" dir="ltr">D2</a>صلاحية حذف صنف</h4>
+<p><b>التصميم</b>صلاحية «حذف صنف» موجودة لكن لا يتم التحقق منها، فيستطيع أي شخص الحذف.</p>
+<p><b>ما سيفعله بوريت</b>يتم التحقق من الصلاحية.</p>
+<div class="media">
+<img src="D2.png" width="900" alt="صورة D2" loading="lazy">
+<video src="D2.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-D2">إجابتك</label><textarea id="a-D2" data-id="D2" data-t="صلاحية حذف صنف" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="D15">
+<h4><a class="id" href="#D15" dir="ltr">D15</a>إغلاق مرتجع المورد</h4>
+<p><b>التصميم</b>عند تسجيل رد المورد لا يُخصم شيء مما على الصيدلية لهذا المورد. كما تحل «مرتجع للمورد» محل السبب الأصلي لاستبعاد البضاعة من البيع.</p>
+<p><b>ما سيفعله بوريت</b>تُخصم القيمة التي قبلها المورد مما على الصيدلية له، ويبقى السبب الأصلي. وتبدأ خانة «السعر» بتكلفة التشغيلة (وهذه النسخة من التصميم تملؤها بالفعل).</p>
+<div class="media">
+<img src="D15.png" width="900" alt="صورة D15" loading="lazy">
+<video src="D15.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-D15">إجابتك</label><textarea id="a-D15" data-id="D15" data-t="إغلاق مرتجع المورد" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="D16">
+<h4><a class="id" href="#D16" dir="ltr">D16</a>المورد عند الاعتماد</h4>
+<p><b>التصميم</b>إذا بقي سؤال «يمكن تقصد…؟» بلا رد، ينشئ الاعتماد موردًا جديدًا.</p>
+<p><b>ما سيفعله بوريت</b>لا يتم الاعتماد حتى يُجاب عن السؤال.</p>
+<div class="media">
+<img src="D16.png" width="900" alt="صورة D16" loading="lazy">
+<video src="D16.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-D16">إجابتك</label><textarea id="a-D16" data-id="D16" data-t="المورد عند الاعتماد" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="D17">
+<h4><a class="id" href="#D17" dir="ltr">D17</a>الملصقات بعد الاعتماد</h4>
+<p><b>التصميم</b>يُطبع على الملصق سعر تشغيلة أقدم.</p>
+<p><b>ما سيفعله بوريت</b>يُطبع على الملصق سعر التشغيلة الجديدة نفسها.</p>
+<div class="media">
+<img src="D17.png" width="900" alt="صورة D17" loading="lazy">
+<video src="D17.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-D17">إجابتك</label><textarea id="a-D17" data-id="D17" data-t="الملصقات بعد الاعتماد" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<h2 id="pharmacist">الصيدلي</h2>
+<h3>البيع والمرتجعات والعملاء والدرج</h3>
+<article id="PQ-21">
+<h4><a class="id" href="#PQ-21" dir="ltr">PQ-21</a>دفتر الأصناف الجدول</h4>
+<p><b>ماذا يفعل التصميم الآن</b>عند بيع صنف جدول يطلب التصميم ثلاث علامات اختيار («صنف جدول في الفاتورة»).</p>
+<p><b>المطلوب منكم</b>هل يُلزم القانون بدفتر إلى جانب هذه العلامات الثلاث؟ وإن كان كذلك، ماذا يجب أن يحتوي؟</p>
+<p><b>اقتراحنا</b>تُحفظ العلامات الثلاث مع الفاتورة، ولا دفتر في الإصدار الأول.</p>
+<div class="media">
+<img src="PQ-21.png" width="900" alt="صورة PQ-21" loading="lazy">
+<video src="PQ-21.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-PQ-21">إجابتك</label><textarea id="a-PQ-21" data-id="PQ-21" data-t="دفتر الأصناف الجدول" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<h3>المخزون والجرد والمشتريات</h3>
+<article id="PQ-11">
+<h4><a class="id" href="#PQ-11" dir="ltr">PQ-11</a>قواعد الإعدام</h4>
+<p><b>ماذا يفعل التصميم الآن</b>في التصميم يقوم المدير بالإعدام ويطبع «محضر إعدام أصناف».</p>
+<p><b>المطلوب منكم</b>هل تشترط القواعد في مصر أكثر من ذلك؟ مثلًا لجنة، أو نموذج من مديرية الصحة، أو قواعد خاصة بالأصناف الجدول.</p>
+<p><b>اقتراحنا</b>المدير وحده، مع صورة اختيارية، و«توقيع المدير» على «محضر إعدام أصناف» المطبوع.</p>
+<div class="media">
+<img src="PQ-11.png" width="900" alt="صورة PQ-11" loading="lazy">
+<video src="PQ-11.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-PQ-11">إجابتك</label><textarea id="a-PQ-11" data-id="PQ-11" data-t="قواعد الإعدام" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="PQ-38">
+<h4><a class="id" href="#PQ-38" dir="ltr">PQ-38</a>الخصم والبونص في فاتورة المورد</h4>
+<p><b>ماذا يفعل التصميم الآن</b>يربط التصميم بينهما: في سطر الفاتورة، خصم 10% على 50 علبة يضيف 5 علب بونص تلقائيًا. والنسبة نفسها تخفض سعر الصيدلي أيضًا.</p>
+<p><b>المطلوب منكم</b>هل هكذا تعمل فواتير الموردين فعلًا؟</p>
+<p><b>اقتراحنا</b>يبقيان مرتبطين كما في التصميم.</p>
+<div class="media">
+<img src="PQ-38.png" width="900" alt="صورة PQ-38" loading="lazy">
+<video src="PQ-38.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-PQ-38">إجابتك</label><textarea id="a-PQ-38" data-id="PQ-38" data-t="الخصم والبونص في فاتورة المورد" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="PQ-36">
+<h4><a class="id" href="#PQ-36" dir="ltr">PQ-36</a>استلام بضاعة منتهية أو قريبة الانتهاء</h4>
+<p><b>ماذا يفعل التصميم الآن</b>لا يتحقق التصميم من تاريخ الصلاحية عند استلام الفاتورة. وفي الفاتورة التجريبية سطر منتهي الصلاحية بالفعل، ولا يُنبَّه إليه.</p>
+<p><b>المطلوب منكم</b>هل يمنع بوريت هذه البضاعة، أم يسمح بها مع تنبيه؟ (قد يكون لمعاذ رأي أيضًا.)</p>
+<p><b>اقتراحنا</b>يُسمح بها مع تنبيه في شاشة المراجعة. والبضاعة منتهية الصلاحية لا تُباع أبدًا.</p>
+<div class="media">
+<img src="PQ-36.png" width="900" alt="صورة PQ-36" loading="lazy">
+<video src="PQ-36.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-PQ-36">إجابتك</label><textarea id="a-PQ-36" data-id="PQ-36" data-t="استلام بضاعة منتهية أو قريبة الانتهاء" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="PQ-8">
+<h4><a class="id" href="#PQ-8" dir="ltr">PQ-8</a>أصناف بدون صلاحية</h4>
+<p class="also">يخص أيضًا النقل من B-Connect.</p>
+<p><b>ماذا يفعل التصميم الآن</b>لا يوجد في التصميم خيار «بدون صلاحية»، ولكل تشغيلة تاريخ صلاحية، لذلك لا توجد صورة لهذا السؤال.</p>
+<p><b>المطلوب منكم</b>ما أنواع الأصناف التي يمكن أن تكون بلا تاريخ صلاحية؟ وهل تُباع مثل أي صنف آخر؟</p>
+<p><b>اقتراحنا</b>يمكن تعليم أي صنف «بدون صلاحية» كما في B-Connect. وتُباع تشغيلاته عاديًا بعد التشغيلات التي لها تاريخ. وعند النقل من B-Connect ينبّه بوريت إلى التشغيلات التي بلا تاريخ في أصناف يجب أن يكون لها تاريخ.</p>
+<div class="media">
+<p class="none">لا توجد صورة: ليس في التصميم شاشة لهذا السؤال.</p>
+</div>
+<div class="ans"><label for="a-PQ-8">إجابتك</label><textarea id="a-PQ-8" data-id="PQ-8" data-t="أصناف بدون صلاحية" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<h2 id="accountant">المحاسب</h2>
+<h3>المخزون والجرد والمشتريات</h3>
+<article id="PQ-33">
+<h4><a class="id" href="#PQ-33" dir="ltr">PQ-33</a>ض.ق.م على المشتريات: قبل خصم الفاتورة أم بعده؟</h4>
+<p><b>ماذا يفعل التصميم الآن</b>في فاتورة الشراء يحسب التصميم «ض.ق.م» على كل سطر أولًا، ثم يخصم خصم الفاتورة من الإجمالي. لذلك لا يتغير «إجمالي ض.ق.م» مع الخصم.</p>
+<p><b>المطلوب منكم</b>هل هذا صحيح، أم تُحسب الضريبة بعد الخصم؟</p>
+<p><b>إلى أن تردّوا نبني</b>كما في التصميم: الضريبة قبل الخصم. وتُحفظ الضريبة بدقة على كل سطر، ويُوزَّع خصم الفاتورة على السطور.</p>
+<div class="media">
+<img src="PQ-33.png" width="900" alt="صورة PQ-33" loading="lazy">
+<video src="PQ-33.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-PQ-33">إجابتك</label><textarea id="a-PQ-33" data-id="PQ-33" data-t="ض.ق.م على المشتريات: قبل خصم الفاتورة أم بعده؟" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="PQ-35">
+<h4><a class="id" href="#PQ-35" dir="ltr">PQ-35</a>إجمالي فاتورة المورد لا يساوي مجموع السطور</h4>
+<p><b>ماذا يفعل التصميم الآن</b>عند الاعتماد ينبّه التصميم إذا اختلف إجمالي الفاتورة المطبوع عن مجموع السطور («الفرق: … — راجع السطور»)، ومع ذلك يسمح بالاعتماد.</p>
+<p><b>المطلوب منكم</b>عند الاختلاف، أي المبلغين يكون مستحقًا للمورد على الصيدلية؟</p>
+<p><b>اقتراحنا</b>مجموع السطور. ينبّه بوريت ويسمح بالاعتماد، ويبقى الفرق ظاهرًا.</p>
+<div class="media">
+<img src="PQ-35.png" width="900" alt="صورة PQ-35" loading="lazy">
+<video src="PQ-35.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-PQ-35">إجابتك</label><textarea id="a-PQ-35" data-id="PQ-35" data-t="إجمالي فاتورة المورد لا يساوي مجموع السطور" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="PQ-34">
+<h4><a class="id" href="#PQ-34" dir="ltr">PQ-34</a>قيمة مرتجع المورد</h4>
+<p><b>ماذا يفعل التصميم الآن</b>عند تسجيل رد المورد يملأ التصميم «السعر» بتكلفة شراء التشغيلة ويسمح بتعديله. و«قيمة المقبول» = الكمية المقبولة × هذا السعر.</p>
+<p><b>المطلوب منكم</b>هل تُحسب قيمة المرتجع بتكلفة التشغيلة، أم بالسعر الذي يقبله المورد؟</p>
+<p><b>اقتراحنا</b>يبدأ «السعر» بتكلفة التشغيلة ويمكن تعديله. وتُخصم القيمة المقبولة مما على الصيدلية للمورد.</p>
+<div class="media">
+<img src="PQ-34.png" width="900" alt="صورة PQ-34" loading="lazy">
+<video src="PQ-34.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-PQ-34">إجابتك</label><textarea id="a-PQ-34" data-id="PQ-34" data-t="قيمة مرتجع المورد" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<article id="PQ-45">
+<h4><a class="id" href="#PQ-45" dir="ltr">PQ-45</a>مدة الاحتفاظ بصور الفواتير</h4>
+<p><b>ماذا يفعل التصميم الآن</b>يمكن رفع صورة لكل فاتورة مورد، ولا يذكر التصميم مدة الاحتفاظ بالصور.</p>
+<p><b>المطلوب منكم</b>كم مدة الاحتفاظ بها؟</p>
+<p><b>اقتراحنا</b>ما دامت الفاتورة موجودة.</p>
+<div class="media">
+<img src="PQ-45.png" width="900" alt="صورة PQ-45" loading="lazy">
+<video src="PQ-45.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-PQ-45">إجابتك</label><textarea id="a-PQ-45" data-id="PQ-45" data-t="مدة الاحتفاظ بصور الفواتير" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<h3>لاحقًا</h3>
+<article id="PQ-6">
+<h4><a class="id" href="#PQ-6" dir="ltr">PQ-6</a>تقارير ض.ق.م والضرائب</h4>
+<p class="also">يخص التقارير.</p>
+<p><b>ماذا يفعل التصميم الآن</b>في التصميم صفحة شهرية للضريبة («الضرائب»).</p>
+<p><b>المطلوب منكم</b>هل يحتاج بوريت تقارير ضريبية، لمحاسب الصيدلية أو للفاتورة الإلكترونية؟ أم يكفي حساب الضريبة صحيحًا على كل سطر شراء؟</p>
+<p><b>اقتراحنا</b>تُحفظ الضريبة صحيحة على كل سطر شراء، ولا تقارير ضريبية في الإصدار الأول. والإيصال الإلكتروني لمصلحة الضرائب في الإصدار الثاني.</p>
+<div class="media">
+<img src="PQ-6.png" width="900" alt="صورة PQ-6" loading="lazy">
+<video src="PQ-6.webm" controls muted width="900" preload="metadata"></video>
+</div>
+<div class="ans"><label for="a-PQ-6">إجابتك</label><textarea id="a-PQ-6" data-id="PQ-6" data-t="تقارير ض.ق.م والضرائب" placeholder="اكتب إجابتك، أو «موافق» لقبول اقتراحنا"></textarea></div>
+</article>
+<h2 id="decided">قرارات اتخذها عمر (للعلم)</h2>
+<ul>
+<li>نقل البضاعة إلى مخزن آخر: أثناء الطريق تكون في مكان وسيط «في الطريق»، فلا تُباع من المخزن المرسِل، ويستلمها المخزن المستلِم عند تأكيد الاستلام.</li>
+<li>أكّد معاذ: الإصدار الأول لصيدلية واحدة، وتأتي الصيدليات المتعددة (وضع السلسلة) بعده مباشرة كخطوة مستقلة.</li>
+<li>مرتجع العميل يعود إلى المخزون، إلى نفس التشغيلة التي بيع منها.</li>
+<li>سعر الدواء يأتي من التشغيلة المستلمة ولا يُعدَّل أبدًا. وتغيير سعر صنف غير دوائي يحتاج صلاحية.</li>
+<li>سعر الشريط يُحدَّد مرة واحدة لكل تشغيلة: سعر العلبة ÷ عدد الشرائط، مع التقريب.</li>
+<li>طريقة دفع واحدة لكل فاتورة، دون تقسيم الدفع.</li>
+<li>يُطبع الإيصال كصورة حتى تتصل الحروف العربية بشكل صحيح.</li>
+</ul>
+</main>
+<div class="bar"><input id="who" placeholder="اسمك"><button id="cp">نسخ كل الإجابات</button><button id="dl">تنزيل الإجابات</button><button id="wa">إرسال إلى عمر عبر واتساب</button><span class="st" id="st"></span></div>
+<script>
+(function(){var K="buret-pq-";var S={"label": "إجابتك", "ph": "اكتب إجابتك، أو «موافق» لقبول اقتراحنا", "name": "اسمك", "copy": "نسخ كل الإجابات", "dl": "تنزيل الإجابات", "wa": "إرسال إلى عمر عبر واتساب", "long": "الإجابات أطول من رسالة واتساب واحدة، فتم تنزيلها كملف. نرجو إرسال الملف إلى عمر عبر واتساب.", "count": "تمت الإجابة على {n} من {t}", "copied": "تم النسخ", "saved": "محفوظ على هذا الجهاز", "head": "أسئلة بوريت للمنتج: الإجابات"};
+function g(k){try{return localStorage.getItem(K+k)||""}catch(e){return ""}}function p(k,v){try{localStorage.setItem(K+k,v)}catch(e){}}
+var ts=[].slice.call(document.querySelectorAll("textarea[data-id]"));var who=document.getElementById("who");var st=document.getElementById("st");
+function cnt(){var n=ts.filter(function(t){return t.value.trim()}).length;st.textContent=S.count.replace("{n}",n).replace("{t}",ts.length)}
+ts.forEach(function(t){t.value=g(t.dataset.id);t.addEventListener("input",function(){p(t.dataset.id,t.value);cnt()})});who.value=g("who");who.addEventListener("input",function(){p("who",who.value)});cnt();
+function text(){var out=[S.head+(who.value?" ("+who.value+")":"")+" - "+new Date().toISOString().slice(0,10),""];ts.forEach(function(t){if(t.value.trim())out.push(t.dataset.id+" - "+t.dataset.t+"\n"+t.value.trim()+"\n")});return out.join("\n")}
+document.getElementById("cp").onclick=function(){var x=text();(navigator.clipboard?navigator.clipboard.writeText(x):Promise.reject()).then(function(){st.textContent=S.copied},function(){window.prompt("",x)})};
+document.getElementById("dl").onclick=function(){var b=new Blob([text()],{type:"text/plain;charset=utf-8"});var a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="buret-answers"+(who.value?"-"+who.value:"")+".txt";a.click()};
+document.getElementById("wa").onclick=function(){var u=encodeURIComponent(text());if(u.length>6000){document.getElementById("dl").click();st.textContent=S.long;window.open("https://wa.me/201000549518","_blank")}else{window.open("https://wa.me/201000549518?text="+u,"_blank")}};
+})();
+</script>
+</div>
+</body>
+</html>
